@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { MethodCard } from '@/components/MethodCard';
@@ -6,8 +7,20 @@ import { FilterBar } from '@/components/FilterBar';
 import { methods, Phase, Difficulty } from '@/data/methods';
 
 const Methods = () => {
-  const [selectedPhase, setSelectedPhase] = useState<Phase | 'all'>('all');
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | 'all'>('all');
+  const [searchParams] = useSearchParams();
+  
+  const initialPhase = (searchParams.get('phase') as Phase) || 'all';
+  const initialDifficulty = searchParams.get('difficulty') ? Number(searchParams.get('difficulty')) as Difficulty : 'all';
+  
+  const [selectedPhase, setSelectedPhase] = useState<Phase | 'all'>(initialPhase === 'all' ? 'all' : initialPhase);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty | 'all'>(initialDifficulty === 'all' ? 'all' : initialDifficulty);
+
+  useEffect(() => {
+    const phase = searchParams.get('phase') as Phase;
+    const difficulty = searchParams.get('difficulty');
+    if (phase) setSelectedPhase(phase);
+    if (difficulty) setSelectedDifficulty(Number(difficulty) as Difficulty);
+  }, [searchParams]);
 
   const filteredMethods = useMemo(() => {
     return methods.filter((method) => {
