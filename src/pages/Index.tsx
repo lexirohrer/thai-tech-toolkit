@@ -1,54 +1,165 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Lightbulb, Heart, BookOpen } from 'lucide-react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowDown, Search, Users, Lightbulb, Heart, BookOpen, ArrowRight, ChevronDown } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { MethodCard } from '@/components/MethodCard';
-import { methods } from '@/data/methods';
+import { methods, phaseLabels, difficultyLabels, Phase, Difficulty } from '@/data/methods';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Index = () => {
+  const navigate = useNavigate();
   const featuredMethods = methods.slice(0, 3);
+
+  const [selectedExperience, setSelectedExperience] = useState<Difficulty | null>(null);
+  const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
+  const [selectedPhase, setSelectedPhase] = useState<Phase | null>(null);
+
+  const experienceOptions = [
+    { value: 1, label: 'beginner experience' },
+    { value: 2, label: 'some experience' },
+    { value: 3, label: 'extensive experience' },
+  ];
+
+  const goalOptions = [
+    { value: 'understand', label: 'understand users better' },
+    { value: 'define', label: 'define the problem' },
+    { value: 'ideate', label: 'generate solutions' },
+    { value: 'test', label: 'test my ideas' },
+    { value: 'gather', label: 'gather feedback' },
+  ];
+
+  const phaseOptions = [
+    { value: 'discover' as Phase, label: 'Discover' },
+    { value: 'define' as Phase, label: 'Define' },
+    { value: 'develop' as Phase, label: 'Develop' },
+    { value: 'deliver' as Phase, label: 'Deliver' },
+  ];
+
+  const handleFindMethods = () => {
+    const params = new URLSearchParams();
+    if (selectedPhase) params.set('phase', selectedPhase);
+    if (selectedExperience) params.set('difficulty', String(selectedExperience));
+    navigate(`/methods?${params.toString()}`);
+  };
+
+  const hasSelections = selectedExperience || selectedGoal || selectedPhase;
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 lg:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 via-background to-gold-light/20" />
-        <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl">
-            <div className="animate-fade-up">
-              <span className="inline-block px-4 py-2 bg-secondary rounded-full text-secondary-foreground text-sm font-medium mb-6">
-                From Fulbright Research
-              </span>
-            </div>
-            
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-up-delay-1">
-              Design Research Methods for{' '}
-              <span className="text-primary">Thai Contexts</span>
+      {/* Hero Section with Grainy Gradient */}
+      <section className="grainy-gradient min-h-[85vh] flex items-center justify-center">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Main Heading */}
+            <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-12 animate-fade-up tracking-tight">
+              A toolkit for design research in Thailand
             </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-up-delay-2">
-              A practical toolkit of culturally-adapted research methods for practitioners who 
-              work in contexts that value social harmony, indirect communication, and respect for hierarchy.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-delay-3">
+
+            {/* Interactive Sentence */}
+            <div className="space-y-6 md:space-y-4 animate-fade-up-delay-1">
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 text-xl md:text-2xl font-mono">
+                <span className="text-foreground">I have</span>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="hero-dropdown min-w-[180px]">
+                    <Search size={16} className="text-muted-foreground" />
+                    <span>{selectedExperience ? experienceOptions.find(o => o.value === selectedExperience)?.label : 'experience'}</span>
+                    <ChevronDown size={16} className="ml-auto" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[200px]">
+                    {experienceOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => setSelectedExperience(option.value as Difficulty)}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <span className="text-foreground">,</span>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 text-xl md:text-2xl font-mono">
+                <span className="text-foreground">I'm trying to</span>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="hero-dropdown min-w-[220px]">
+                    <Search size={16} className="text-muted-foreground" />
+                    <span>{selectedGoal ? goalOptions.find(o => o.value === selectedGoal)?.label : 'achieve a goal'}</span>
+                    <ChevronDown size={16} className="ml-auto" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[220px]">
+                    {goalOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => setSelectedGoal(option.value)}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                <span className="text-foreground">, and</span>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 text-xl md:text-2xl font-mono">
+                <span className="text-foreground">my project is in phase</span>
+                
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="hero-dropdown min-w-[160px]">
+                    <Search size={16} className="text-muted-foreground" />
+                    <span>{selectedPhase ? phaseLabels[selectedPhase].en : 'select phase'}</span>
+                    <ChevronDown size={16} className="ml-auto" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[160px]">
+                    {phaseOptions.map((option) => (
+                      <DropdownMenuItem
+                        key={option.value}
+                        onClick={() => setSelectedPhase(option.value)}
+                        className="cursor-pointer hover:bg-muted"
+                      >
+                        {option.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+
+            {/* Action Button */}
+            {hasSelections && (
+              <div className="mt-10 animate-fade-up">
+                <button
+                  onClick={handleFindMethods}
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/90 transition-colors"
+                >
+                  Find Methods
+                  <ArrowRight size={20} />
+                </button>
+              </div>
+            )}
+
+            {/* Browse All Link */}
+            <div className="mt-16 animate-fade-up-delay-2">
               <Link
                 to="/methods"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-mono"
               >
-                Explore Methods
-                <ArrowRight size={20} />
-              </Link>
-              <Link
-                to="/case-studies"
-                className="inline-flex items-center justify-center gap-2 bg-card text-foreground px-8 py-4 rounded-full font-medium text-lg border border-border hover:bg-muted transition-colors"
-              >
-                Read Case Studies
+                or, browse all methods
+                <ArrowDown size={18} className="animate-bounce" />
               </Link>
             </div>
           </div>
