@@ -24,11 +24,17 @@ const Index = () => {
   // Filters for methods section
   const [filterPhase, setFilterPhase] = useState<Phase | 'all'>('all');
   const [filterDifficulty, setFilterDifficulty] = useState<Difficulty | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filteredMethods = methods.filter((method) => {
     const phaseMatch = filterPhase === 'all' || method.phase === filterPhase;
     const difficultyMatch = filterDifficulty === 'all' || method.difficulty === filterDifficulty;
-    return phaseMatch && difficultyMatch;
+    const searchMatch = searchQuery === '' || 
+      method.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      method.nameThai.includes(searchQuery) ||
+      method.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      method.culturalTip.toLowerCase().includes(searchQuery.toLowerCase());
+    return phaseMatch && difficultyMatch && searchMatch;
   });
 
   const experienceOptions = [
@@ -187,6 +193,18 @@ const Index = () => {
             <p className="text-muted-foreground text-lg max-w-2xl">
               Browse our collection of culturally-adapted design research methods.
             </p>
+          </div>
+
+          {/* Search Bar */}
+          <div className="relative mb-6">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
+            <input
+              type="text"
+              placeholder="Search methods by name, description, or cultural tips..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+            />
           </div>
 
           <FilterBar
