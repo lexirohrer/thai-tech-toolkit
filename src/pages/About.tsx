@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { BookOpen, Users, Globe, Heart } from 'lucide-react';
+import { BookOpen, Users, Globe, Heart, Lightbulb, ArrowRight } from 'lucide-react';
+import { caseStudies } from '@/data/caseStudies';
 
 const About = () => {
   return (
@@ -18,6 +20,60 @@ const About = () => {
               How this collection of culturally-adapted design research methods came to be, 
               and why it matters for Thai practitioners.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Toolkit Section */}
+      <section className="py-16 lg:py-24 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Why This Toolkit?
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto mb-6" />
+            <p className="text-muted-foreground text-lg">
+              Standard design research methods often assume Western cultural norms. 
+              This toolkit adapts proven methods for Thai research contexts.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8">
+              <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-8 h-8 text-sage-dark" />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                Social Harmony
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Methods designed to gather honest feedback while maintaining relationships and group cohesion.
+              </p>
+            </div>
+
+            <div className="text-center p-8">
+              <div className="w-16 h-16 rounded-2xl bg-gold-light flex items-center justify-center mx-auto mb-6">
+                <Lightbulb className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                Indirect Feedback
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Techniques that surface critical insights without requiring direct confrontation or criticism.
+              </p>
+            </div>
+
+            <div className="text-center p-8">
+              <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mx-auto mb-6">
+                <Users className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                Hierarchy Sensitivity
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Approaches that create space for all voices, regardless of age, status, or position.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -185,6 +241,70 @@ const About = () => {
                 the local facilitators who helped adapt and refine these methods in practice.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Preview */}
+      <section className="py-16 lg:py-24 bg-foreground text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block px-4 py-2 bg-primary/20 rounded-full text-primary text-sm font-medium mb-6">
+                From the Field
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                Real Research, Real Insights
+              </h2>
+              <p className="text-primary-foreground/70 text-lg leading-relaxed mb-8">
+                These methods were developed and refined through actual research projects across Thailand. 
+                Read the case studies to see how each method was applied in practice.
+              </p>
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-colors"
+              >
+                <BookOpen size={20} />
+                Read Case Studies
+              </Link>
+            </div>
+
+            <div className="space-y-4">
+              {caseStudies.slice(0, 3).map((study, index) => (
+                <Link
+                  key={study.id}
+                  to={`/case-studies/${study.id}`}
+                  className="block p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/20 hover:bg-primary-foreground/15 transition-colors"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <h4 className="font-display text-lg font-semibold mb-2">{study.title}</h4>
+                  <p className="text-primary-foreground/60 text-sm">
+                    {study.location}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Ready to Start?
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8">
+              Begin with beginner-friendly methods and build your research skills step by step.
+            </p>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium text-lg hover:bg-primary/90 transition-colors"
+            >
+              Browse All Methods
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>
