@@ -34,7 +34,7 @@ const CaseStudyDetail = () => {
       <article className="flex-1">
         {/* Header */}
         <section className="py-12 lg:py-16 bg-gradient-to-br from-secondary/30 via-background to-gold-light/20">
-          <div className="container mx-auto px-4">
+          <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
             <Link
               to="/case-studies"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
@@ -75,8 +75,8 @@ const CaseStudyDetail = () => {
 
         {/* Content */}
         <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
+          <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div className="max-w-3xl lg:max-w-4xl">
               {/* Summary */}
               <div className="mb-12">
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-4">
