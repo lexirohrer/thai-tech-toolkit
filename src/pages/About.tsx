@@ -11,8 +11,8 @@ const About = () => {
 
       {/* Hero */}
       <section className="py-16 lg:py-20 bg-gradient-to-br from-secondary/30 via-background to-gold-light/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-2xl lg:max-w-3xl">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
               About This Toolkit
             </h1>
@@ -26,7 +26,7 @@ const About = () => {
 
       {/* Why This Toolkit Section */}
       <section className="py-16 lg:py-24 bg-card">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
               Why This Toolkit?
@@ -80,8 +80,8 @@ const About = () => {
 
       {/* Content */}
       <section className="py-12 flex-1">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-3xl lg:max-w-4xl">
             {/* Origin Story */}
             <div className="mb-16">
               <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
@@ -247,7 +247,7 @@ const About = () => {
 
       {/* Case Studies Preview */}
       <section className="py-16 lg:py-24 bg-foreground text-primary-foreground">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-4 py-2 bg-primary/20 rounded-full text-primary text-sm font-medium mb-6">
@@ -290,7 +290,7 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
               Ready to Start?

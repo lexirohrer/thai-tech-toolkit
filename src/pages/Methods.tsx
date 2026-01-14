@@ -36,18 +36,18 @@ const Methods = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <section className="py-16 lg:py-20 bg-gradient-to-br from-secondary/30 via-background to-gold-light/20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-2xl lg:max-w-3xl">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">{t('methods.researchMethods')}</h1>
             <p className="text-lg text-muted-foreground leading-relaxed">{t('methods.pageSubtitle')}</p>
           </div>
         </div>
       </section>
       <section className="py-12 flex-1">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <FilterBar selectedPhase={selectedPhase} selectedDifficulty={selectedDifficulty} onPhaseChange={setSelectedPhase} onDifficultyChange={setSelectedDifficulty} />
           {filteredMethods.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredMethods.map((method) => (<MethodCard key={method.id} method={method} />))}
             </div>
           ) : (

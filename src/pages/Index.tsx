@@ -73,8 +73,8 @@ const Index = () => {
       <Navigation />
 
       <section className="grainy-gradient min-h-[85vh] flex items-center justify-center">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+          <div className="max-w-5xl xl:max-w-6xl mx-auto text-center">
             <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-12 animate-fade-up tracking-tight">
               {t('hero.title')}
             </h1>
@@ -160,7 +160,7 @@ const Index = () => {
       </section>
 
       <section ref={methodsRef} className="py-16 lg:py-24 bg-card">
-        <div className="container mx-auto px-4">
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">{t('methods.title')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl">{t('methods.subtitle')}</p>
@@ -173,7 +173,7 @@ const Index = () => {
 
           <FilterBar selectedPhase={filterPhase} selectedDifficulty={filterDifficulty} onPhaseChange={setFilterPhase} onDifficultyChange={setFilterDifficulty} />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
             {filteredMethods.map((method) => (
               <MethodCard key={method.id} method={method} />
             ))}
