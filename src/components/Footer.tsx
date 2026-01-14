@@ -27,8 +27,8 @@ export function Footer() {
             <h4 className="font-display font-semibold text-lg mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/methods" className="text-primary-foreground/70 hover:text-primary transition-colors">
-                  {t('footer.methods')}
+                <Link to="/" className="text-primary-foreground/70 hover:text-primary transition-colors">
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>

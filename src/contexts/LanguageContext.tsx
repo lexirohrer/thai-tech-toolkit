@@ -133,6 +133,45 @@ const translations: Record<string, Record<Language, string>> = {
   'footer.copyright': { en: 'Design Toolkit. Open for adaptation and use.', th: 'ชุดเครื่องมือการออกแบบ เปิดให้ปรับใช้ได้' },
   'footer.madeWith': { en: 'Made with', th: 'สร้างด้วย' },
   'footer.forPractitioners': { en: 'for Thai research practitioners', th: 'สำหรับนักวิจัยชาวไทย' },
+
+  // Facilitation Tips
+  'facilitation.tipsForFacilitators': { en: 'Tips for facilitators', th: 'เคล็ดลับสำหรับผู้ดำเนินการ' },
+  'facilitation.goal': { en: 'Your goal as a facilitator is to provide enough structure to guide participants without leading or biasing them.', th: 'เป้าหมายของคุณในฐานะผู้ดำเนินการคือให้โครงสร้างที่เพียงพอเพื่อแนะนำผู้เข้าร่วมโดยไม่ชี้นำหรือทำให้เกิดอคติ' },
+  'facilitation.tip1': { en: 'Greatly limit the number of observers who aren\'t participating. Observers may make users more hesitant to share ideas freely and more sensitive to hierarchy and authority.', th: 'จำกัดจำนวนผู้สังเกตการณ์ที่ไม่เข้าร่วมอย่างมาก ผู้สังเกตการณ์อาจทำให้ผู้ใช้ลังเลที่จะแบ่งปันความคิดอย่างอิสระและไวต่อลำดับชั้นและอำนาจมากขึ้น' },
+  'facilitation.tip2': { en: 'Separate groups by seniority if present for more open expression of ideas.', th: 'แยกกลุ่มตามอาวุโสหากมีอยู่เพื่อการแสดงออกของความคิดที่เปิดกว้างมากขึ้น' },
+  'facilitation.tip3': { en: 'Give absolutely minimal context to avoid leading or biasing users—explain the system\'s goals when allowing users to test it, but don\'t explain how the system works.', th: 'ให้บริบทน้อยที่สุดเพื่อหลีกเลี่ยงการชี้นำหรือทำให้เกิดอคติ—อธิบายเป้าหมายของระบบเมื่อให้ผู้ใช้ทดสอบ แต่ไม่ต้องอธิบายว่าระบบทำงานอย่างไร' },
+  'facilitation.tip4': { en: 'Don\'t make assumptions about what the user thinks, or why they think a certain way. Ask questions that seem obvious to confirm correct understanding.', th: 'อย่าสร้างสมมติฐานเกี่ยวกับสิ่งที่ผู้ใช้คิด หรือทำไมพวกเขาถึงคิดแบบนั้น ถามคำถามที่ดูเหมือนชัดเจนเพื่อยืนยันความเข้าใจที่ถูกต้อง' },
+  'facilitation.tip5': { en: 'Avoid leading questions at all costs.', th: 'หลีกเลี่ยงคำถามชี้นำอย่างเด็ดขาด' },
+  'facilitation.tip6': { en: 'Have a different person than the designer host the session, and tell participants that you are not the one who created the designs, so they can critique them freely.', th: 'ให้บุคคลอื่นที่ไม่ใช่ผู้ออกแบบเป็นผู้ดำเนินการ และบอกผู้เข้าร่วมว่าคุณไม่ใช่คนที่สร้างการออกแบบ เพื่อให้พวกเขาสามารถวิจารณ์ได้อย่างอิสระ' },
+  'facilitation.tip7': { en: 'Ask quieter members of the group to share their thoughts after writing, and verbally affirm their contributions to build confidence.', th: 'ขอให้สมาชิกที่เงียบกว่าของกลุ่มแบ่งปันความคิดของพวกเขาหลังจากเขียน และยืนยันการมีส่วนร่วมของพวกเขาด้วยวาจาเพื่อสร้างความมั่นใจ' },
+  'facilitation.tip8': { en: 'Plan for discussion to take longer than expected. Participants will often want to continue discussing until consensus is reached. Budget more time than you think you\'ll need for projects, and book one more workshop session than you think you\'ll need with a group (for example, if you plan 2 sessions worth of activities, try to book 3 sessions).', th: 'วางแผนให้การอภิปรายใช้เวลานานกว่าที่คาดไว้ ผู้เข้าร่วมมักต้องการอภิปรายต่อไปจนกว่าจะบรรลุฉันทามติ วางแผนเวลาให้มากกว่าที่คุณคิดว่าคุณจะต้องการสำหรับโครงการ และจองเซสชันเวิร์กช็อปเพิ่มอีกหนึ่งเซสชันมากกว่าที่คุณคิดว่าคุณจะต้องการกับกลุ่ม (ตัวอย่างเช่น หากคุณวางแผนกิจกรรม 2 เซสชัน ลองจอง 3 เซสชัน)' },
+  'facilitation.understandingContext': { en: 'Understanding the facilitation context', th: 'ทำความเข้าใจบริบทการดำเนินการ' },
+  'facilitation.seeTips': { en: 'see facilitation tips', th: 'ดูเคล็ดลับการดำเนินการ' },
+
+  // Cultural Context
+  'cultural.krengJai': { en: 'Kreng Jai (เกรงใจ)', th: 'เกรงใจ' },
+  'cultural.krengJaiDesc': { en: 'A reluctance to impose on others or cause discomfort. This cultural value means participants may withhold critical feedback to avoid making others feel bad.', th: 'ความไม่เต็มใจที่จะสร้างภาระให้ผู้อื่นหรือทำให้ไม่สบายใจ คุณค่าทางวัฒนธรรมนี้หมายความว่าผู้เข้าร่วมอาจปิดกั้นความคิดเห็นเชิงวิพากษ์เพื่อหลีกเลี่ยงการทำให้ผู้อื่นรู้สึกไม่ดี' },
+  'cultural.face': { en: 'Face (หน้า)', th: 'หน้า' },
+  'cultural.faceDesc': { en: 'Social reputation and dignity are highly valued. Research methods should create conditions where feedback can be given without anyone losing face.', th: 'ชื่อเสียงและศักดิ์ศรีทางสังคมมีคุณค่าสูง วิธีการวิจัยควรสร้างเงื่อนไขที่สามารถให้ข้อเสนอแนะได้โดยไม่มีใครเสียหน้า' },
+  'cultural.hierarchy': { en: 'Hierarchy (ลำดับชั้น)', th: 'ลำดับชั้น' },
+  'cultural.hierarchyDesc': { en: 'Age, status, and position significantly influence social interactions. Junior members may defer to seniors even when they have valuable insights.', th: 'อายุ สถานะ และตำแหน่งมีอิทธิพลอย่างมากต่อการปฏิสัมพันธ์ทางสังคม สมาชิกรุ่นน้องอาจยอมจำนนต่อรุ่นพี่แม้ว่าพวกเขาจะมีข้อมูลเชิงลึกที่มีค่า' },
+  'cultural.indirectCommunication': { en: 'Indirect Communication', th: 'การสื่อสารทางอ้อม' },
+  'cultural.indirectCommunicationDesc': { en: 'Direct criticism or confrontation is often avoided. Meaning is conveyed through context, tone, and what is left unsaid.', th: 'การวิพากษ์วิจารณ์โดยตรงหรือการเผชิญหน้ามักจะถูกหลีกเลี่ยง ความหมายถูกสื่อผ่านบริบท น้ำเสียง และสิ่งที่ไม่ได้พูด' },
+  'cultural.polychronicTime': { en: 'Polychronic Time Perception', th: 'การรับรู้เวลาหลายมิติ' },
+  'cultural.polychronicTimeDesc': { en: 'Time is viewed relationally rather than linearly. Workshops need to accommodate relational norms where discussion, consensus, and hearing everyone are prioritized. This may require less strictly task-structured approaches than Western practitioners are accustomed to.', th: 'เวลาถูกมองในเชิงความสัมพันธ์มากกว่าเชิงเส้น เวิร์กช็อปต้องรองรับบรรทัดฐานเชิงความสัมพันธ์ที่การอภิปราย ฉันทามติ และการรับฟังทุกคนเป็นสิ่งสำคัญ นี่อาจต้องการแนวทางที่มีโครงสร้างงานน้อยกว่าที่ผู้ปฏิบัติงานตะวันตกคุ้นเคย' },
+
+  // Method Detail
+  'methodDetail.backToHome': { en: 'Back to Home', th: 'กลับไปหน้าแรก' },
+  'methodDetail.duration': { en: 'Duration', th: 'ระยะเวลา' },
+  'methodDetail.participants': { en: 'Participants', th: 'ผู้เข้าร่วม' },
+
+  // Case Study Detail
+  'caseStudyDetail.backToCaseStudies': { en: 'Back to Case Studies', th: 'กลับไปกรณีศึกษา' },
+
+  // NotFound
+  'notFound.title': { en: '404', th: '404' },
+  'notFound.message': { en: 'Oops! Page not found', th: 'โอ๊ะ! ไม่พบหน้า' },
+  'notFound.returnHome': { en: 'Return to Home', th: 'กลับไปหน้าแรก' },
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

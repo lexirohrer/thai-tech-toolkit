@@ -18,23 +18,24 @@ export function MethodCard({ method }: MethodCardProps) {
     deliver: 'phase-deliver',
   };
 
+  const difficultyClasses = {
+    1: 'difficulty-beginner',
+    2: 'difficulty-intermediate',
+    3: 'difficulty-advanced',
+  };
+
   return (
     <Link
       to={`/methods/${method.id}`}
       className="method-card group block"
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between gap-3 mb-4">
         <span className={cn('phase-badge', phaseClasses[method.phase])}>
           {phaseLabels[method.phase][language]}
         </span>
-        <div className="difficulty-indicator" title={difficultyLabels[method.difficulty][language]}>
-          {[1, 2, 3].map((level) => (
-            <div
-              key={level}
-              className={cn('difficulty-dot', level <= method.difficulty && 'active')}
-            />
-          ))}
-        </div>
+        <span className={cn('difficulty-badge', difficultyClasses[method.difficulty])}>
+          {difficultyLabels[method.difficulty][language]}
+        </span>
       </div>
 
       <h3 className="font-display text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
@@ -45,7 +46,7 @@ export function MethodCard({ method }: MethodCardProps) {
       </p>
 
       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-        {method.description}
+        {language === 'en' ? method.description : (method.descriptionThai || method.description)}
       </p>
 
       <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">

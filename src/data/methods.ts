@@ -6,12 +6,15 @@ export interface Method {
   name: string;
   nameThai: string;
   description: string;
+  descriptionThai?: string;
   phase: Phase;
   difficulty: Difficulty;
   duration: string;
   participants: string;
   culturalTip: string;
+  culturalTipThai?: string;
   steps: string[];
+  stepsThai?: string[];
 }
 
 export const phaseLabels: Record<Phase, { en: string; th: string }> = {
@@ -33,11 +36,13 @@ export const methods: Method[] = [
     name: 'Contextual Observation',
     nameThai: 'การสังเกตการณ์ตามบริบท',
     description: 'Observe participants in their natural environment without direct intervention. This low-pressure approach respects social harmony while gathering authentic insights.',
+    descriptionThai: 'สังเกตผู้เข้าร่วมในสภาพแวดล้อมตามธรรมชาติโดยไม่มีการแทรกแซงโดยตรง วิธีการที่ไม่มีแรงกดดันนี้เคารพความสามัคคีทางสังคมในขณะที่รวบรวมข้อมูลเชิงลึกที่แท้จริง',
     phase: 'discover',
     difficulty: 1,
     duration: '2-4 hours',
     participants: '1-2 researchers',
     culturalTip: 'In Thai contexts, maintain a respectful distance and avoid taking notes conspicuously. Consider having a local community member introduce you first to build trust.',
+    culturalTipThai: 'ในบริบทไทย รักษาระยะห่างที่เคารพและหลีกเลี่ยงการจดบันทึกอย่างเด่นชัด พิจารณาให้สมาชิกชุมชนท้องถิ่นแนะนำคุณก่อนเพื่อสร้างความไว้วางใจ',
     steps: [
       'Identify the context and time for observation',
       'Seek permission from community leaders or gatekeepers',
@@ -45,17 +50,26 @@ export const methods: Method[] = [
       'Document observations through mental notes, then write after',
       'Reflect on patterns and behaviors observed',
     ],
+    stepsThai: [
+      'ระบุบริบทและเวลาสำหรับการสังเกต',
+      'ขออนุญาตจากผู้นำชุมชนหรือผู้ควบคุม',
+      'วางตำแหน่งตัวเองอย่างไม่เด่นชัด',
+      'บันทึกการสังเกตผ่านบันทึกทางจิตใจ แล้วเขียนภายหลัง',
+      'สะท้อนเกี่ยวกับรูปแบบและพฤติกรรมที่สังเกตเห็น',
+    ],
   },
   {
     id: 'photo-voice',
     name: 'Photo Voice',
     nameThai: 'ภาพเล่าเรื่อง',
     description: 'Participants document their experiences through photography, then share stories about their images. This indirect method allows expression without confrontational questioning.',
+    descriptionThai: 'ผู้เข้าร่วมบันทึกประสบการณ์ของพวกเขาผ่านการถ่ายภาพ แล้วแบ่งปันเรื่องราวเกี่ยวกับภาพของพวกเขา วิธีการทางอ้อมนี้ช่วยให้การแสดงออกโดยไม่ต้องใช้คำถามที่เผชิญหน้า',
     phase: 'discover',
     difficulty: 1,
     duration: '1-2 weeks',
     participants: '5-15 participants',
     culturalTip: 'Let participants choose what to photograph freely. Group sharing sessions work well as they reduce individual pressure and encourage collective storytelling.',
+    culturalTipThai: 'ให้ผู้เข้าร่วมเลือกสิ่งที่ต้องการถ่ายภาพอย่างอิสระ เซสชันการแบ่งปันกลุ่มทำงานได้ดีเพราะลดแรงกดดันส่วนบุคคลและส่งเสริมการเล่าเรื่องร่วมกัน',
     steps: [
       'Provide cameras or phones to participants',
       'Give open-ended prompts about daily life or challenges',
@@ -63,17 +77,26 @@ export const methods: Method[] = [
       'Facilitate group sharing sessions',
       'Identify themes collaboratively',
     ],
+    stepsThai: [
+      'ให้กล้องหรือโทรศัพท์แก่ผู้เข้าร่วม',
+      'ให้คำแนะนำแบบเปิดเกี่ยวกับชีวิตประจำวันหรือความท้าทาย',
+      'อนุญาตให้ใช้เวลา 1-2 สัปดาห์ในการรวบรวมภาพ',
+      'ดำเนินการเซสชันการแบ่งปันกลุ่ม',
+      'ระบุธีมร่วมกัน',
+    ],
   },
   {
     id: 'journey-mapping',
     name: 'Journey Mapping',
     nameThai: 'การทำแผนที่ประสบการณ์',
     description: "Visualize a person's experience over time through a process or service. Using visual tools makes abstract experiences concrete and easier to discuss.",
+    descriptionThai: 'แสดงภาพประสบการณ์ของบุคคลเมื่อเวลาผ่านไปผ่านกระบวนการหรือบริการ การใช้เครื่องมือภาพทำให้ประสบการณ์ที่เป็นนามธรรมเป็นรูปธรรมและง่ายต่อการอภิปราย',
     phase: 'define',
     difficulty: 2,
     duration: '2-3 hours',
     participants: '4-8 participants',
     culturalTip: 'Use collaborative drawing activities where everyone contributes. This distributes "ownership" of critical feedback across the group, making it safer to express concerns.',
+    culturalTipThai: 'ใช้กิจกรรมการวาดภาพร่วมกันที่ทุกคนมีส่วนร่วม นี่จะกระจาย "ความเป็นเจ้าของ" ของข้อเสนอแนะเชิงวิพากษ์ทั่วทั้งกลุ่ม ทำให้ปลอดภัยกว่าในการแสดงความกังวล',
     steps: [
       'Define the journey scope and timeframe',
       'Prepare large paper and colorful materials',
@@ -81,17 +104,26 @@ export const methods: Method[] = [
       'Add emotional indicators at each stage',
       'Discuss high and low points together',
     ],
+    stepsThai: [
+      'กำหนดขอบเขตและกรอบเวลาของการเดินทาง',
+      'เตรียมกระดาษขนาดใหญ่และวัสดุที่มีสีสัน',
+      'แนะนำผู้เข้าร่วมในการสร้างไทม์ไลน์',
+      'เพิ่มตัวบ่งชี้ทางอารมณ์ในแต่ละขั้นตอน',
+      'อภิปรายจุดสูงและต่ำร่วมกัน',
+    ],
   },
   {
     id: 'card-sorting',
     name: 'Card Sorting',
     nameThai: 'การจัดหมวดหมู่การ์ด',
     description: 'Participants organize concepts or features into categories that make sense to them. The tactile, game-like format reduces formality and encourages participation.',
+    descriptionThai: 'ผู้เข้าร่วมจัดระเบียบแนวคิดหรือคุณสมบัติเป็นหมวดหมู่ที่สมเหตุสมผลสำหรับพวกเขา รูปแบบที่สัมผัสได้เหมือนเกมช่วยลดความเป็นทางการและส่งเสริมการมีส่วนร่วม',
     phase: 'define',
     difficulty: 1,
     duration: '45-90 minutes',
     participants: '3-6 participants',
     culturalTip: 'Frame this as a collaborative game rather than a test. Allow participants to work in pairs or small groups to reduce individual pressure.',
+    culturalTipThai: 'จัดกรอบนี้เป็นเกมที่ร่วมมือกันมากกว่าการทดสอบ อนุญาตให้ผู้เข้าร่วมทำงานเป็นคู่หรือกลุ่มเล็กเพื่อลดแรงกดดันส่วนบุคคล',
     steps: [
       'Prepare cards with concepts, features, or ideas',
       'Explain there are no wrong answers',
@@ -99,17 +131,26 @@ export const methods: Method[] = [
       'Ask them to name each category',
       'Discuss reasoning behind groupings',
     ],
+    stepsThai: [
+      'เตรียมการ์ดที่มีแนวคิด คุณสมบัติ หรือความคิด',
+      'อธิบายว่าไม่มีคำตอบที่ผิด',
+      'ให้ผู้เข้าร่วมจัดกลุ่มการ์ดตามธรรมชาติ',
+      'ขอให้พวกเขาตั้งชื่อแต่ละหมวดหมู่',
+      'อภิปรายเหตุผลเบื้องหลังการจัดกลุ่ม',
+    ],
   },
   {
     id: 'dot-voting',
     name: 'Dot Voting',
     nameThai: 'การลงคะแนนด้วยจุด',
     description: 'A democratic prioritization method where everyone places dots on preferred options. Anonymity reduces hierarchy concerns in decision-making.',
+    descriptionThai: 'วิธีการจัดลำดับความสำคัญแบบประชาธิปไตยที่ทุกคนวางจุดบนตัวเลือกที่ต้องการ ความไม่ระบุตัวตนช่วยลดความกังวลเกี่ยวกับลำดับชั้นในการตัดสินใจ',
     phase: 'develop',
     difficulty: 1,
     duration: '15-30 minutes',
     participants: '5-20 participants',
     culturalTip: 'Use identical dot stickers and allow simultaneous voting to maintain anonymity. This helps junior members express preferences without fear of contradicting seniors.',
+    culturalTipThai: 'ใช้สติกเกอร์จุดที่เหมือนกันและอนุญาตให้ลงคะแนนพร้อมกันเพื่อรักษาความไม่ระบุตัวตน นี่ช่วยให้สมาชิกรุ่นน้องแสดงความชอบโดยไม่กลัวที่จะขัดแย้งกับรุ่นพี่',
     steps: [
       'Display all options clearly on a wall',
       'Give each person the same number of dots',
@@ -117,17 +158,26 @@ export const methods: Method[] = [
       'Count results together as a group',
       'Discuss the outcomes collectively',
     ],
+    stepsThai: [
+      'แสดงตัวเลือกทั้งหมดอย่างชัดเจนบนผนัง',
+      'ให้แต่ละคนมีจำนวนจุดเท่ากัน',
+      'อนุญาตให้ลงคะแนนพร้อมกันถ้าเป็นไปได้',
+      'นับผลลัพธ์ร่วมกันเป็นกลุ่ม',
+      'อภิปรายผลลัพธ์ร่วมกัน',
+    ],
   },
   {
     id: 'paper-prototyping',
     name: 'Paper Prototyping',
     nameThai: 'การสร้างต้นแบบกระดาษ',
     description: 'Create low-fidelity mockups using paper and basic materials. The rough nature signals that feedback is welcome and changes are easy.',
+    descriptionThai: 'สร้างแบบจำลองความเที่ยงตรงต่ำโดยใช้กระดาษและวัสดุพื้นฐาน ลักษณะที่หยาบส่งสัญญาณว่าข้อเสนอแนะเป็นที่ยินดีและการเปลี่ยนแปลงเป็นเรื่องง่าย',
     phase: 'develop',
     difficulty: 2,
     duration: '2-4 hours',
     participants: '3-5 participants',
     culturalTip: 'Emphasize that rough prototypes are intentional—this signals that everything can change and reduces hesitation to give feedback.',
+    culturalTipThai: 'เน้นว่าต้นแบบที่หยาบนั้นตั้งใจ—นี่ส่งสัญญาณว่าทุกอย่างสามารถเปลี่ยนแปลงได้และลดความลังเลในการให้ข้อเสนอแนะ',
     steps: [
       'Gather paper, markers, scissors, tape',
       'Sketch initial concepts loosely',
@@ -135,17 +185,26 @@ export const methods: Method[] = [
       'Test with users immediately',
       'Iterate based on observations',
     ],
+    stepsThai: [
+      'รวบรวมกระดาษ ปากกา กรรไกร เทป',
+      'ร่างแนวคิดเบื้องต้นอย่างหลวมๆ',
+      'สร้างองค์ประกอบแบบโต้ตอบที่เคลื่อนไหวได้',
+      'ทดสอบกับผู้ใช้ทันที',
+      'ทำซ้ำตามการสังเกต',
+    ],
   },
   {
     id: 'role-play-simulation',
     name: 'Role Play Simulation',
     nameThai: 'การจำลองสถานการณ์',
     description: 'Act out scenarios to test solutions and understand different perspectives. The playful format creates psychological safety for experimentation.',
+    descriptionThai: 'แสดงสถานการณ์เพื่อทดสอบโซลูชันและทำความเข้าใจมุมมองที่แตกต่าง รูปแบบที่สนุกสนานสร้างความปลอดภัยทางจิตใจสำหรับการทดลอง',
     phase: 'develop',
     difficulty: 3,
     duration: '1-2 hours',
     participants: '4-8 participants',
     culturalTip: 'Start with warm-up activities to build comfort. Allow people to volunteer for roles rather than assigning them, respecting individual comfort levels.',
+    culturalTipThai: 'เริ่มต้นด้วยกิจกรรมวอร์มอัพเพื่อสร้างความสบายใจ อนุญาตให้ผู้คนอาสาสมัครรับบทบาทแทนการมอบหมายให้เคารพระดับความสบายใจของแต่ละบุคคล',
     steps: [
       'Define the scenario clearly',
       'Assign or invite volunteers for roles',
@@ -153,17 +212,26 @@ export const methods: Method[] = [
       'Run through the scenario',
       'Debrief as a group afterward',
     ],
+    stepsThai: [
+      'กำหนดสถานการณ์อย่างชัดเจน',
+      'มอบหมายหรือเชิญอาสาสมัครสำหรับบทบาท',
+      'จัดตั้งพื้นที่ทางกายภาพ',
+      'ดำเนินการสถานการณ์',
+      'สรุปเป็นกลุ่มหลังจากนั้น',
+    ],
   },
   {
     id: 'feedback-circles',
     name: 'Feedback Circles',
     nameThai: 'วงสนทนาแลกเปลี่ยน',
     description: 'Structured group feedback sessions where comments flow in one direction around a circle. The format ensures everyone speaks and creates balanced participation.',
+    descriptionThai: 'เซสชันข้อเสนอแนะกลุ่มที่มีโครงสร้างซึ่งความคิดเห็นไหลไปในทิศทางเดียวรอบวง รูปแบบนี้ทำให้แน่ใจว่าทุกคนพูดและสร้างการมีส่วนร่วมที่สมดุล',
     phase: 'deliver',
     difficulty: 2,
     duration: '1-2 hours',
     participants: '6-12 participants',
     culturalTip: 'Start with appreciations before moving to suggestions. Use "I wonder if..." language rather than direct criticism to maintain face.',
+    culturalTipThai: 'เริ่มต้นด้วยการชื่นชมก่อนย้ายไปยังข้อเสนอแนะ ใช้ภาษาที่ว่า "ฉันสงสัยว่า..." แทนการวิพากษ์วิจารณ์โดยตรงเพื่อรักษาหน้า',
     steps: [
       'Arrange seating in a circle',
       'Present the solution or prototype',
@@ -171,23 +239,39 @@ export const methods: Method[] = [
       'Second round for gentle suggestions',
       'Thank each contributor explicitly',
     ],
+    stepsThai: [
+      'จัดที่นั่งเป็นวงกลม',
+      'นำเสนอโซลูชันหรือต้นแบบ',
+      'วนรอบเพื่อการชื่นชมก่อน',
+      'รอบที่สองสำหรับข้อเสนอแนะที่นุ่มนวล',
+      'ขอบคุณผู้มีส่วนร่วมแต่ละคนอย่างชัดเจน',
+    ],
   },
   {
     id: 'pilot-testing',
     name: 'Pilot Testing',
     nameThai: 'การทดสอบนำร่อง',
     description: 'Test solutions with a small group before full implementation. Small-scale testing allows learning without large-scale failure.',
+    descriptionThai: 'ทดสอบโซลูชันกับกลุ่มเล็กก่อนการดำเนินการเต็มรูปแบบ การทดสอบขนาดเล็กช่วยให้เรียนรู้โดยไม่ต้องล้มเหลวในระดับใหญ่',
     phase: 'deliver',
     difficulty: 3,
     duration: '1-4 weeks',
     participants: '10-30 users',
     culturalTip: 'Position pilot testing as a learning opportunity for the research team, not an evaluation of users. This reduces pressure and encourages honest feedback.',
+    culturalTipThai: 'วางตำแหน่งการทดสอบนำร่องเป็นโอกาสการเรียนรู้สำหรับทีมวิจัย ไม่ใช่การประเมินผู้ใช้ นี่ช่วยลดแรงกดดันและส่งเสริมข้อเสนอแนะที่ซื่อสัตย์',
     steps: [
       'Select a representative pilot group',
       'Define success metrics clearly',
       'Implement with close support',
       'Gather ongoing feedback',
       'Document learnings for iteration',
+    ],
+    stepsThai: [
+      'เลือกกลุ่มนำร่องที่เป็นตัวแทน',
+      'กำหนดตัวชี้วัดความสำเร็จอย่างชัดเจน',
+      'ดำเนินการด้วยการสนับสนุนอย่างใกล้ชิด',
+      'รวบรวมข้อเสนอแนะอย่างต่อเนื่อง',
+      'บันทึกการเรียนรู้สำหรับการทำซ้ำ',
     ],
   },
 ];

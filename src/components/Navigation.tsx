@@ -12,21 +12,17 @@ export function Navigation() {
 
   const navItems = [
     { path: '/', label: t('nav.home') },
-    { path: '/methods', label: t('nav.methods') },
     { path: '/case-studies', label: t('nav.caseStudies') },
     { path: '/about', label: t('nav.about') },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+    <nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">DT</span>
-            </div>
             <span className="font-display font-semibold text-xl text-foreground">
-              {t('nav.designToolkit')}
+              uxlex designs
             </span>
           </Link>
 

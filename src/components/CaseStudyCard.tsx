@@ -15,13 +15,14 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
       to={`/case-studies/${study.id}`}
       className="method-card group block"
     >
-      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm text-muted-foreground mb-3">
         <span className="flex items-center gap-1">
-          <MapPin size={14} />
+          <MapPin size={14} className="flex-shrink-0" />
           {study.location}
         </span>
+        <span className="hidden sm:inline text-muted-foreground/50">•</span>
         <span className="flex items-center gap-1">
-          <Calendar size={14} />
+          <Calendar size={14} className="flex-shrink-0" />
           {study.duration}
         </span>
       </div>
@@ -34,7 +35,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
       </p>
 
       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-        {study.summary}
+        {language === 'en' ? study.summary : (study.summaryThai || study.summary)}
       </p>
 
       <div className="flex flex-wrap gap-2 mb-4">
