@@ -2,17 +2,20 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/methods', label: 'Methods' },
-  { path: '/case-studies', label: 'Case Studies' },
-  { path: '/about', label: 'About' },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
+import { LanguageToggle } from './LanguageToggle';
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { path: '/', label: t('nav.home') },
+    { path: '/methods', label: t('nav.methods') },
+    { path: '/case-studies', label: t('nav.caseStudies') },
+    { path: '/about', label: t('nav.about') },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -23,7 +26,7 @@ export function Navigation() {
               <span className="text-primary-foreground font-display font-bold text-lg">DT</span>
             </div>
             <span className="font-display font-semibold text-xl text-foreground">
-              Design Toolkit
+              {t('nav.designToolkit')}
             </span>
           </Link>
 
@@ -41,16 +44,20 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <LanguageToggle />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

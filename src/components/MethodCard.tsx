@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom';
 import { Clock, Users, ArrowRight } from 'lucide-react';
 import { Method, phaseLabels, difficultyLabels } from '@/data/methods';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface MethodCardProps {
   method: Method;
 }
 
 export function MethodCard({ method }: MethodCardProps) {
+  const { language, t } = useLanguage();
+  
   const phaseClasses = {
     discover: 'phase-discover',
     define: 'phase-define',
@@ -22,9 +25,9 @@ export function MethodCard({ method }: MethodCardProps) {
     >
       <div className="flex items-start justify-between mb-4">
         <span className={cn('phase-badge', phaseClasses[method.phase])}>
-          {phaseLabels[method.phase].en}
+          {phaseLabels[method.phase][language]}
         </span>
-        <div className="difficulty-indicator" title={difficultyLabels[method.difficulty].en}>
+        <div className="difficulty-indicator" title={difficultyLabels[method.difficulty][language]}>
           {[1, 2, 3].map((level) => (
             <div
               key={level}
@@ -35,9 +38,11 @@ export function MethodCard({ method }: MethodCardProps) {
       </div>
 
       <h3 className="font-display text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-        {method.name}
+        {language === 'en' ? method.name : method.nameThai}
       </h3>
-      <p className="text-sm text-muted-foreground mb-3">{method.nameThai}</p>
+      <p className="text-sm text-muted-foreground mb-3">
+        {language === 'en' ? method.nameThai : method.name}
+      </p>
 
       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
         {method.description}
@@ -55,7 +60,7 @@ export function MethodCard({ method }: MethodCardProps) {
       </div>
 
       <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all">
-        Learn more
+        {t('method.learnMore')}
         <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
       </div>
     </Link>
