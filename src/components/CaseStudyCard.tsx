@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, ArrowRight } from 'lucide-react';
 import { CaseStudy } from '@/data/caseStudies';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CaseStudyCardProps {
   study: CaseStudy;
 }
 
 export function CaseStudyCard({ study }: CaseStudyCardProps) {
+  const { language, t } = useLanguage();
+
   return (
     <Link
       to={`/case-studies/${study.id}`}
@@ -24,9 +27,11 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
       </div>
 
       <h3 className="font-display text-xl font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-        {study.title}
+        {language === 'en' ? study.title : study.titleThai}
       </h3>
-      <p className="text-sm text-muted-foreground mb-3">{study.titleThai}</p>
+      <p className="text-sm text-muted-foreground mb-3">
+        {language === 'en' ? study.titleThai : study.title}
+      </p>
 
       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
         {study.summary}
@@ -44,7 +49,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
       </div>
 
       <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all">
-        Read case study
+        {t('caseStudy.readCaseStudy')}
         <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
       </div>
     </Link>

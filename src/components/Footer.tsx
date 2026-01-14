@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-foreground text-primary-foreground py-12 mt-auto">
       <div className="container mx-auto px-4">
@@ -12,51 +15,49 @@ export function Footer() {
                 <span className="text-primary-foreground font-display font-bold text-lg">DT</span>
               </div>
               <span className="font-display font-semibold text-xl">
-                Design Toolkit
+                {t('nav.designToolkit')}
               </span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
-              A collection of culturally-adapted design research methods for Thai practitioners, 
-              developed through Fulbright research.
+              {t('footer.description')}
             </p>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
                 <Link to="/methods" className="text-primary-foreground/70 hover:text-primary transition-colors">
-                  Methods
+                  {t('footer.methods')}
                 </Link>
               </li>
               <li>
                 <Link to="/case-studies" className="text-primary-foreground/70 hover:text-primary transition-colors">
-                  Case Studies
+                  {t('footer.caseStudies')}
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="text-primary-foreground/70 hover:text-primary transition-colors">
-                  About This Project
+                  {t('footer.aboutProject')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Acknowledgments</h4>
+            <h4 className="font-display font-semibold text-lg mb-4">{t('footer.acknowledgments')}</h4>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
-              This toolkit was developed as part of a Fulbright research project in collaboration 
-              with Thai universities and community organizations.
+              {t('footer.acknowledgmentsText')}
             </p>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/60 text-sm">
-            © {new Date().getFullYear()} Design Toolkit. Open for adaptation and use.
+            © {new Date().getFullYear()} {t('footer.copyright')}
           </p>
           <p className="text-primary-foreground/60 text-sm flex items-center gap-1">
-            Made with <Heart size={14} className="text-accent" /> for Thai research practitioners
+            {t('footer.madeWith')} <Heart size={14} className="text-accent" /> {t('footer.forPractitioners')}
           </p>
         </div>
       </div>
