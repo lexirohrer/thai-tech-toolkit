@@ -11,9 +11,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">DT</span>
-              </div>
+              <img src="/favicon.svg" alt="Logo" className="w-10 h-10" />
               <span className="font-display font-semibold text-xl">
                 {t('nav.designToolkit')}
               </span>

@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { ArrowDown, Search, ArrowRight, ChevronDown, Lightbulb, Heart, Users, Globe, BookOpen, Clock } from 'lucide-react';
+import { ArrowDown, Search, ArrowRight, ChevronDown, Lightbulb, Heart, Users, Globe, BookOpen, Clock, AlertTriangle } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { MethodCard } from '@/components/MethodCard';
 import { FilterBar } from '@/components/FilterBar';
-import { methods, phaseLabels, Phase, Difficulty } from '@/data/methods';
+import { methods, phaseLabels, Phase, Difficulty, DigitalLiteracy } from '@/data/methods';
+import { ParticipantRange } from '@/components/FilterBar';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   DropdownMenu,
@@ -28,21 +29,44 @@ const Index = () => {
 
   const [selectedExperience, setSelectedExperience] = useState<Difficulty | null>(null);
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null);
-  const [selectedPhase, setSelectedPhase] = useState<Phase | null>(null);
   
-  const [filterPhase, setFilterPhase] = useState<Phase | 'all'>('all');
-  const [filterDifficulty, setFilterDifficulty] = useState<Difficulty | 'all'>('all');
+  const [filterPhases, setFilterPhases] = useState<Phase[]>([]);
+  const [filterDifficulties, setFilterDifficulties] = useState<Difficulty[]>([]);
+  const [filterDigitalLiteracies, setFilterDigitalLiteracies] = useState<DigitalLiteracy[]>([]);
+  const [filterParticipantRanges, setFilterParticipantRanges] = useState<ParticipantRange[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const matchesParticipantRange = (method: typeof methods[0], ranges: ParticipantRange[]): boolean => {
+    if (ranges.length === 0) return true;
+    const { min, max } = method.participantCount;
+    
+    return ranges.some((range) => {
+      switch (range) {
+        case '1-5':
+          return min <= 5 && max >= 1; // Overlaps with 1-5 range
+        case '6-10':
+          return min <= 10 && max >= 6; // Overlaps with 6-10 range
+        case '11-20':
+          return min <= 20 && max >= 11; // Overlaps with 11-20 range
+        case '21+':
+          return max >= 21; // Overlaps with 21+ range
+        default:
+          return true;
+      }
+    });
+  };
+
   const filteredMethods = methods.filter((method) => {
-    const phaseMatch = filterPhase === 'all' || method.phase === filterPhase;
-    const difficultyMatch = filterDifficulty === 'all' || method.difficulty === filterDifficulty;
+    const phaseMatch = filterPhases.length === 0 || filterPhases.includes(method.phase);
+    const difficultyMatch = filterDifficulties.length === 0 || filterDifficulties.includes(method.difficulty);
+    const digitalLiteracyMatch = filterDigitalLiteracies.length === 0 || filterDigitalLiteracies.includes(method.digitalLiteracy);
+    const participantRangeMatch = matchesParticipantRange(method, filterParticipantRanges);
     const searchMatch = searchQuery === '' || 
       method.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       method.nameThai.includes(searchQuery) ||
       method.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       method.culturalTip.toLowerCase().includes(searchQuery.toLowerCase());
-    return phaseMatch && difficultyMatch && searchMatch;
+    return phaseMatch && difficultyMatch && digitalLiteracyMatch && participantRangeMatch && searchMatch;
   });
 
   const experienceOptions = [
@@ -52,24 +76,24 @@ const Index = () => {
   ];
 
   const goalOptions = [
-    { value: 'understand', label: t('hero.understandUsers') },
-    { value: 'define', label: t('hero.defineProblem') },
-    { value: 'ideate', label: t('hero.generateSolutions') },
-    { value: 'test', label: t('hero.testIdeas') },
-    { value: 'gather', label: t('hero.gatherFeedback') },
-  ];
-
-  const phaseOptions = [
-    { value: 'discover' as Phase, label: phaseLabels.discover[language] },
-    { value: 'define' as Phase, label: phaseLabels.define[language] },
-    { value: 'develop' as Phase, label: phaseLabels.develop[language] },
-    { value: 'deliver' as Phase, label: phaseLabels.deliver[language] },
+    { value: 'understand', label: t('hero.understandUsers'), phase: 'discover' as Phase },
+    { value: 'define', label: t('hero.defineProblem'), phase: 'define' as Phase },
+    { value: 'ideate', label: t('hero.generateSolutions'), phase: 'develop' as Phase },
+    { value: 'test', label: t('hero.testIdeas'), phase: 'deliver' as Phase },
+    { value: 'gather', label: t('hero.gatherFeedback'), phase: 'deliver' as Phase },
   ];
 
   const handleFindMethods = () => {
     // Apply filters based on selections
-    if (selectedPhase) setFilterPhase(selectedPhase);
-    if (selectedExperience) setFilterDifficulty(selectedExperience);
+    if (selectedGoal) {
+      const goalPhase = goalOptions.find(opt => opt.value === selectedGoal)?.phase;
+      if (goalPhase) {
+        setFilterPhases(prev => prev.includes(goalPhase) ? prev : [...prev, goalPhase]);
+      }
+    }
+    if (selectedExperience) {
+      setFilterDifficulties(prev => prev.includes(selectedExperience) ? prev : [...prev, selectedExperience]);
+    }
     // Scroll to methods section
     methodsRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -85,7 +109,7 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [carouselApi]);
 
-  const hasSelections = selectedExperience || selectedGoal || selectedPhase;
+  const hasSelections = selectedExperience || selectedGoal;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -100,24 +124,6 @@ const Index = () => {
               </h1>
 
               <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 text-xl md:text-2xl font-mono animate-fade-up-delay-1">
-                <span className="text-foreground">{t('hero.iHave')}</span>
-                
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="hero-dropdown min-w-[180px]">
-                    <Search size={16} className="text-muted-foreground" />
-                    <span>{selectedExperience ? experienceOptions.find(o => o.value === selectedExperience)?.label : t('hero.experience')}</span>
-                    <ChevronDown size={16} className="ml-auto" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[200px]">
-                    {experienceOptions.map((option) => (
-                      <DropdownMenuItem key={option.value} onClick={() => setSelectedExperience(option.value as Difficulty)} className="cursor-pointer hover:bg-muted">
-                        {option.label}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <span className="text-foreground">,</span>
-
                 <span className="text-foreground">{t('hero.imTryingTo')}</span>
                 
                 <DropdownMenu>
@@ -136,22 +142,23 @@ const Index = () => {
                 </DropdownMenu>
                 <span className="text-foreground">{t('hero.and')}</span>
 
-                <span className="text-foreground">{t('hero.projectInPhase')}</span>
+                <span className="text-foreground">{t('hero.iHave')}</span>
                 
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="hero-dropdown min-w-[160px]">
+                  <DropdownMenuTrigger className="hero-dropdown min-w-[180px]">
                     <Search size={16} className="text-muted-foreground" />
-                    <span>{selectedPhase ? phaseLabels[selectedPhase][language] : t('hero.selectPhase')}</span>
+                    <span>{selectedExperience ? experienceOptions.find(o => o.value === selectedExperience)?.label : t('hero.experience')}</span>
                     <ChevronDown size={16} className="ml-auto" />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[160px]">
-                    {phaseOptions.map((option) => (
-                      <DropdownMenuItem key={option.value} onClick={() => setSelectedPhase(option.value)} className="cursor-pointer hover:bg-muted">
+                  <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[200px]">
+                    {experienceOptions.map((option) => (
+                      <DropdownMenuItem key={option.value} onClick={() => setSelectedExperience(option.value as Difficulty)} className="cursor-pointer hover:bg-muted">
                         {option.label}
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
+                <span className="text-foreground"> {t('hero.facilitating')}</span>
               </div>
 
               {hasSelections && (
@@ -192,7 +199,40 @@ const Index = () => {
             <input type="text" placeholder={t('methods.searchPlaceholder')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors" />
           </div>
 
-          <FilterBar selectedPhase={filterPhase} selectedDifficulty={filterDifficulty} onPhaseChange={setFilterPhase} onDifficultyChange={setFilterDifficulty} />
+          <FilterBar 
+            selectedPhases={filterPhases} 
+            selectedDifficulties={filterDifficulties}
+            selectedDigitalLiteracies={filterDigitalLiteracies}
+            selectedParticipantRanges={filterParticipantRanges}
+            onPhaseChange={(phase) => {
+              setFilterPhases(prev => 
+                prev.includes(phase) 
+                  ? prev.filter(p => p !== phase)
+                  : [...prev, phase]
+              );
+            }}
+            onDifficultyChange={(difficulty) => {
+              setFilterDifficulties(prev => 
+                prev.includes(difficulty) 
+                  ? prev.filter(d => d !== difficulty)
+                  : [...prev, difficulty]
+              );
+            }}
+            onDigitalLiteracyChange={(literacy) => {
+              setFilterDigitalLiteracies(prev => 
+                prev.includes(literacy) 
+                  ? prev.filter(l => l !== literacy)
+                  : [...prev, literacy]
+              );
+            }}
+            onParticipantRangeChange={(range) => {
+              setFilterParticipantRanges(prev => 
+                prev.includes(range) 
+                  ? prev.filter(r => r !== range)
+                  : [...prev, range]
+              );
+            }}
+          />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
             {filteredMethods.map((method) => (
@@ -291,55 +331,143 @@ const Index = () => {
               </Carousel>
             </div>
 
-            {/* Tips Sections - Side by Side */}
-            <div className="grid lg:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-4">Workshop Prep</h3>
-                <div className="space-y-4">
-                  <div className="p-6 rounded-2xl bg-card border border-border">
+            {/* Tips Sections */}
+            <div className="mb-8">
+              <h3 className="font-display text-xl font-semibold text-foreground mb-4">Before the Workshop</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip1')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip2')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip6')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip8')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip9')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              <DropdownMenu>
+                <div className="flex w-full rounded-lg border border-primary overflow-hidden">
+                  <button
+                    className="flex-1 px-6 py-3 bg-background text-primary font-semibold hover:bg-muted transition-colors text-left"
+                    onClick={() => {
+                      // Default action: open English script
+                      window.open('https://docs.google.com/document/d/1rd-poar_0WTbWDukw4ozPDZqlPtScmIuOH9R00XbZBc/edit?usp=sharing', '_blank');
+                    }}
+                  >
+                    See Example Scripts
+                  </button>
+                  <div className="w-px bg-primary self-stretch" />
+                  <DropdownMenuTrigger asChild>
+                    <button className="px-3 py-3 bg-background text-primary hover:bg-muted transition-colors flex items-center justify-center">
+                      <ChevronDown size={16} />
+                    </button>
+                  </DropdownMenuTrigger>
+                </div>
+                <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[180px]">
+                  <DropdownMenuItem
+                    onClick={() => {
+                      window.open('https://docs.google.com/document/d/1rd-poar_0WTbWDukw4ozPDZqlPtScmIuOH9R00XbZBc/edit?usp=sharing', '_blank');
+                    }}
+                    className="cursor-pointer hover:bg-muted"
+                  >
+                    English Script
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      window.open('https://docs.google.com/document/d/1oPofaBjJJu7V9YKHrpoYUtQ9tS2eEoarLZeD3VLyY7Y/edit?usp=sharing', '_blank');
+                    }}
+                    className="cursor-pointer hover:bg-muted"
+                  >
+                    Thai Script
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            <div className="mb-8">
+              <h3 className="font-display text-xl font-semibold text-foreground mb-4">During the Workshop</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip3')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip4')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip7')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-4">{t('facilitation.commonChallenges')}</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge1')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip1')}
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip2')}
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip6')}
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip8')}
+                      {t('facilitation.challenge1Solution')}
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-4">During the Workshop</h3>
-                <div className="space-y-4">
-                  <div className="p-6 rounded-2xl bg-card border border-border">
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge2')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip3')}
+                      {t('facilitation.challenge2Solution')}
                     </p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge3')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip4')}
+                      {t('facilitation.challenge3Solution')}
                     </p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge4')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip5')}
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-2xl bg-card border border-border">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('facilitation.tip7')}
+                      {t('facilitation.challenge4Solution')}
                     </p>
                   </div>
                 </div>

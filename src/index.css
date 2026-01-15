@@ -126,19 +126,28 @@
   }
 
   .phase-discover {
-    @apply bg-secondary text-secondary-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-define {
-    @apply bg-gold-light text-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-develop {
-    @apply bg-accent/20 text-accent-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-deliver {
-    @apply bg-primary/20 text-primary;
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
+  .phase-filter-selected {
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .difficulty-badge {
@@ -146,15 +155,52 @@
   }
 
   .difficulty-beginner {
-    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+    background-color: #FFDB9E;
+    color: #52390C;
   }
 
   .difficulty-intermediate {
-    @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400;
+    background-color: #FFDB9E;
+    color: #52390C;
   }
 
   .difficulty-advanced {
-    @apply bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400;
+    background-color: #FFDB9E;
+    color: #52390C;
+  }
+
+  .difficulty-filter-selected {
+    background-color: #FFDB9E;
+    color: #52390C;
+  }
+
+  .digital-literacy-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .digital-literacy-low {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-medium {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-high {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-filter-selected {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .participant-range-filter-selected {
+    background-color: #748289;
+    color: hsl(var(--primary-foreground));
   }
 
   .nav-link {
@@ -296,19 +342,28 @@
   }
 
   .phase-discover {
-    @apply bg-secondary text-secondary-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-define {
-    @apply bg-gold-light text-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-develop {
-    @apply bg-accent/20 text-accent-foreground;
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .phase-deliver {
-    @apply bg-primary/20 text-primary;
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
+  .phase-filter-selected {
+    background-color: #CFE2D7;
+    color: #29563C;
   }
 
   .difficulty-badge {
@@ -316,15 +371,52 @@
   }
 
   .difficulty-beginner {
-    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+    background-color: #FFDB9E;
+    color: #52390C;
   }
 
   .difficulty-intermediate {
-    @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400;
+    background-color: #FFDB9E;
+    color: #52390C;
   }
 
   .difficulty-advanced {
-    @apply bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400;
+    background-color: #FFDB9E;
+    color: #52390C;
+  }
+
+  .difficulty-filter-selected {
+    background-color: #FFDB9E;
+    color: #52390C;
+  }
+
+  .digital-literacy-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .digital-literacy-low {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-medium {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-high {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .digital-literacy-filter-selected {
+    background-color: #BCDAEB;
+    color: #243239;
+  }
+
+  .participant-range-filter-selected {
+    background-color: #748289;
+    color: hsl(var(--primary-foreground));
   }
 
   .nav-link {

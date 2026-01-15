@@ -21,6 +21,7 @@ export function Navigation() {
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-3">
+            <img src="/favicon.svg" alt="Logo" className="w-10 h-10" />
             <span className="font-display font-semibold text-xl text-foreground">
               uxlex designs
             </span>

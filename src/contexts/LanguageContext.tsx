@@ -17,9 +17,10 @@ const translations: Record<string, Record<Language, string>> = {
   'nav.designToolkit': { en: 'Design Toolkit', th: 'ชุดเครื่องมือการออกแบบ' },
 
   // Hero Section
-  'hero.title': { en: 'A toolkit for design research in Thailand', th: 'ชุดเครื่องมือสำหรับการวิจัยการออกแบบในประเทศไทย' },
+  'hero.title': { en: 'A toolkit for doing co-design research in Thailand', th: 'ชุดเครื่องมือสำหรับการวิจัยการออกแบบร่วมกันในประเทศไทย' },
   'hero.iHave': { en: 'I have', th: 'ฉันมี' },
   'hero.experience': { en: 'experience', th: 'ประสบการณ์' },
+  'hero.facilitating': { en: 'facilitating', th: 'ในการดำเนินการ' },
   'hero.beginnerExperience': { en: 'beginner experience', th: 'ประสบการณ์ระดับเริ่มต้น' },
   'hero.someExperience': { en: 'some experience', th: 'ประสบการณ์บ้าง' },
   'hero.extensiveExperience': { en: 'extensive experience', th: 'ประสบการณ์มาก' },
@@ -46,10 +47,14 @@ const translations: Record<string, Record<Language, string>> = {
   'methods.noMatchAdjust': { en: 'No methods match your current filters. Try adjusting your selection.', th: 'ไม่พบวิธีการที่ตรงกับตัวกรอง ลองปรับการเลือกของคุณ' },
 
   // Filter Bar
-  'filter.byPhase': { en: 'Filter by Phase', th: 'กรองตามระยะ' },
-  'filter.byDifficulty': { en: 'Filter by Difficulty', th: 'กรองตามความยาก' },
+  'filter.byPhase': { en: 'Project Phase', th: 'ระยะของโครงการ' },
+  'filter.byDifficulty': { en: 'Facilitator Experience Needed', th: 'ประสบการณ์ผู้ดำเนินการที่ต้องการ' },
+  'filter.byParticipants': { en: 'Number of Participants', th: 'จำนวนผู้เข้าร่วม' },
+  'filter.byDigitalLiteracy': { en: 'User Digital Literacy', th: 'ทักษะดิจิทัลของผู้ใช้' },
   'filter.allPhases': { en: 'All Phases', th: 'ทุกระยะ' },
   'filter.allLevels': { en: 'All Levels', th: 'ทุกระดับ' },
+  'filter.allParticipants': { en: 'All', th: 'ทั้งหมด' },
+  'filter.allLiteracy': { en: 'All', th: 'ทั้งหมด' },
 
   // Method Card
   'method.learnMore': { en: 'Learn more', th: 'เรียนรู้เพิ่มเติม' },
@@ -137,16 +142,25 @@ const translations: Record<string, Record<Language, string>> = {
   // Facilitation Tips
   'facilitation.tipsForFacilitators': { en: 'Tips for facilitators', th: 'เคล็ดลับสำหรับผู้ดำเนินการ' },
   'facilitation.goal': { en: 'Your goal as a facilitator is to provide enough structure to guide participants without leading or biasing them.', th: 'เป้าหมายของคุณในฐานะผู้ดำเนินการคือให้โครงสร้างที่เพียงพอเพื่อแนะนำผู้เข้าร่วมโดยไม่ชี้นำหรือทำให้เกิดอคติ' },
-  'facilitation.tip1': { en: 'Greatly limit the number of observers who aren\'t participating. Observers may make users more hesitant to share ideas freely and more sensitive to hierarchy and authority.', th: 'จำกัดจำนวนผู้สังเกตการณ์ที่ไม่เข้าร่วมอย่างมาก ผู้สังเกตการณ์อาจทำให้ผู้ใช้ลังเลที่จะแบ่งปันความคิดอย่างอิสระและไวต่อลำดับชั้นและอำนาจมากขึ้น' },
-  'facilitation.tip2': { en: 'Separate groups by seniority if present for more open expression of ideas.', th: 'แยกกลุ่มตามอาวุโสหากมีอยู่เพื่อการแสดงออกของความคิดที่เปิดกว้างมากขึ้น' },
-  'facilitation.tip3': { en: 'Give absolutely minimal context to avoid leading or biasing users—explain the system\'s goals when allowing users to test it, but don\'t explain how the system works.', th: 'ให้บริบทน้อยที่สุดเพื่อหลีกเลี่ยงการชี้นำหรือทำให้เกิดอคติ—อธิบายเป้าหมายของระบบเมื่อให้ผู้ใช้ทดสอบ แต่ไม่ต้องอธิบายว่าระบบทำงานอย่างไร' },
-  'facilitation.tip4': { en: 'Don\'t make assumptions about what the user thinks, or why they think a certain way. Ask questions that seem obvious to confirm correct understanding.', th: 'อย่าสร้างสมมติฐานเกี่ยวกับสิ่งที่ผู้ใช้คิด หรือทำไมพวกเขาถึงคิดแบบนั้น ถามคำถามที่ดูเหมือนชัดเจนเพื่อยืนยันความเข้าใจที่ถูกต้อง' },
-  'facilitation.tip5': { en: 'Avoid leading questions at all costs.', th: 'หลีกเลี่ยงคำถามชี้นำอย่างเด็ดขาด' },
-  'facilitation.tip6': { en: 'Have a different person than the designer host the session, and tell participants that you are not the one who created the designs, so they can critique them freely.', th: 'ให้บุคคลอื่นที่ไม่ใช่ผู้ออกแบบเป็นผู้ดำเนินการ และบอกผู้เข้าร่วมว่าคุณไม่ใช่คนที่สร้างการออกแบบ เพื่อให้พวกเขาสามารถวิจารณ์ได้อย่างอิสระ' },
-  'facilitation.tip7': { en: 'Ask quieter members of the group to share their thoughts after writing, and verbally affirm their contributions to build confidence.', th: 'ขอให้สมาชิกที่เงียบกว่าของกลุ่มแบ่งปันความคิดของพวกเขาหลังจากเขียน และยืนยันการมีส่วนร่วมของพวกเขาด้วยวาจาเพื่อสร้างความมั่นใจ' },
-  'facilitation.tip8': { en: 'Plan for discussion to take longer than expected. Participants will often want to continue discussing until consensus is reached. Budget more time than you think you\'ll need for projects, and book one more workshop session than you think you\'ll need with a group (for example, if you plan 2 sessions worth of activities, try to book 3 sessions).', th: 'วางแผนให้การอภิปรายใช้เวลานานกว่าที่คาดไว้ ผู้เข้าร่วมมักต้องการอภิปรายต่อไปจนกว่าจะบรรลุฉันทามติ วางแผนเวลาให้มากกว่าที่คุณคิดว่าคุณจะต้องการสำหรับโครงการ และจองเซสชันเวิร์กช็อปเพิ่มอีกหนึ่งเซสชันมากกว่าที่คุณคิดว่าคุณจะต้องการกับกลุ่ม (ตัวอย่างเช่น หากคุณวางแผนกิจกรรม 2 เซสชัน ลองจอง 3 เซสชัน)' },
+  'facilitation.tip1': { en: 'Limit observers. They make participants hesitant to share and more sensitive to hierarchy.', th: 'จำกัดผู้สังเกตการณ์ พวกเขาทำให้ผู้เข้าร่วมลังเลที่จะแบ่งปันและไวต่อลำดับชั้น' },
+  'facilitation.tip2': { en: 'Separate groups by seniority for more open expression.', th: 'แยกกลุ่มตามอาวุโสเพื่อการแสดงออกที่เปิดกว้าง' },
+  'facilitation.tip3': { en: 'Give minimal context, and wait for users to figure out the system themselves. Explain goals, not how the system works.', th: 'ให้บริบทน้อยที่สุด และรอให้ผู้ใช้เข้าใจระบบด้วยตนเอง อธิบายเป้าหมาย ไม่ใช่การทำงานของระบบ' },
+  'facilitation.tip4': { en: 'Don\'t make assumptions—ask the user to explain why they feel a certain way. Avoid leading questions that bias responses.', th: 'อย่าสร้างสมมติฐาน—ถามผู้ใช้ให้อธิบายว่าทำไมถึงรู้สึกแบบนั้น หลีกเลี่ยงคำถามชี้นำที่ทำให้เกิดอคติในการตอบ' },
+  'facilitation.tip6': { en: 'Have someone other than the designer host the session. Tell participants you didn\'t create the designs so they can critique with less hesitation to offend you.', th: 'ให้คนอื่นที่ไม่ใช่ผู้ออกแบบเป็นผู้ดำเนินการเซสชัน บอกผู้เข้าร่วมว่าคุณไม่ได้สร้างการออกแบบเพื่อให้วิจารณ์ได้โดยลังเลน้อยลงที่จะทำให้คุณไม่พอใจ' },
+  'facilitation.tip7': { en: 'After writing activities, invite quieter members to share their thoughts. Affirm their contributions to build confidence.', th: 'หลังกิจกรรมการเขียน เชิญสมาชิกที่เงียบกว่าให้แบ่งปันความคิดเห็น ยืนยันการมีส่วนร่วมเพื่อสร้างความมั่นใจ' },
+  'facilitation.tip8': { en: 'Participants may want to continue discussing until they reach consensus, even if allocated time is up. Budget for discussions to run over time and workshops to take longer than expected.', th: 'ผู้เข้าร่วมอาจต้องการอภิปรายต่อไปจนกว่าจะบรรลุฉันทามติ แม้เวลาที่กำหนดไว้จะหมดแล้ว วางแผนงบประมาณให้การอภิปรายใช้เวลานานเกินกำหนดและเวิร์กช็อปใช้เวลานานกว่าที่คาดไว้' },
+  'facilitation.tip9': { en: 'Conduct research in person whenever possible, especially when working with users who may have lower digital literacy (e.g. rural users, elder users, etc).', th: 'ดำเนินการวิจัยแบบพบหน้ากันเมื่อเป็นไปได้ โดยเฉพาะเมื่อทำงานกับผู้ใช้ที่มีทักษะดิจิทัลต่ำ (เช่น ผู้ใช้ในชนบท ผู้ใช้สูงอายุ เป็นต้น)' },
+  'facilitation.commonChallenges': { en: 'Common Challenges', th: 'ความท้าทายทั่วไป' },
+  'facilitation.challenge1': { en: 'Everyone is agreeing with the first person who speaks', th: 'ทุกคนเห็นด้วยกับคนแรกที่พูด' },
+  'facilitation.challenge1Solution': { en: 'Switch to using Write-then-Speak methods, or anonymous Dot Voting to choose between ideas.', th: 'เปลี่ยนไปใช้วิธีการเขียนก่อนพูด หรือการลงคะแนนด้วยจุดแบบไม่ระบุชื่อเพื่อเลือกระหว่างไอเดีย' },
+  'facilitation.challenge2': { en: 'People won\'t sketch', th: 'ผู้คนไม่ยอมวาดภาพ' },
+  'facilitation.challenge2Solution': { en: 'Use paper components that are pre-built, or use worksheets that have some structure (such as phone outlines, already labelled to tell them the step of the journey they should draw).', th: 'ใช้ส่วนประกอบกระดาษที่สร้างไว้ล่วงหน้า หรือใช้เวิร์กชีตที่มีโครงสร้างบางอย่าง (เช่น รูปทรงโทรศัพท์ที่มีป้ายบอกขั้นตอนของกระบวนการที่ควรวาด)' },
+  'facilitation.challenge3': { en: 'People are too polite to critique the designs in front of authority', th: 'ผู้คนสุภาพเกินไปที่จะวิจารณ์การออกแบบต่อหน้าผู้มีอำนาจ' },
+  'facilitation.challenge3Solution': { en: 'Remove observers; make any designers or builders of the system leave; ask people to write their thoughts on worksheets or sticky notes, and put people in pairs to discuss.', th: 'ลบผู้สังเกตการณ์ ให้ผู้ออกแบบหรือผู้สร้างระบบออก ขอให้ผู้คนเขียนความคิดของพวกเขาบนเวิร์กชีตหรือโน้ตติด และจับคู่ผู้คนเพื่ออภิปราย' },
+  'facilitation.challenge4': { en: 'People are just echoing others\' thoughts', th: 'ผู้คนเพียงแค่ทำซ้ำความคิดของผู้อื่น' },
+  'facilitation.challenge4Solution': { en: 'Ask more specific follow-up questions. Instead of "What problems do you have with this system?", ask "What was the most frustrating moment in this process?", or "What did you hesitate about before pressing that button?"', th: 'ถามคำถามติดตามที่เฉพาะเจาะจงมากขึ้น แทนที่จะถามว่า "คุณมีปัญหาอะไรกับระบบนี้?" ถามว่า "ช่วงเวลาที่น่าหงุดหงิดที่สุดในกระบวนการนี้คืออะไร?" หรือ "คุณลังเลอะไรก่อนกดปุ่มนั้น?"' },
   'facilitation.understandingContext': { en: 'Understanding the facilitation context', th: 'ทำความเข้าใจบริบทการดำเนินการ' },
-  'facilitation.seeTips': { en: 'see facilitation tips', th: 'ดูเคล็ดลับการดำเนินการ' },
+  'facilitation.seeTips': { en: 'See Facilitation Tips', th: 'ดูเคล็ดลับการดำเนินการ' },
 
   // Cultural Context
   'cultural.krengJai': { en: 'Kreng Jai (เกรงใจ)', th: 'เกรงใจ' },
@@ -158,7 +172,7 @@ const translations: Record<string, Record<Language, string>> = {
   'cultural.indirectCommunication': { en: 'Indirect Communication', th: 'การสื่อสารทางอ้อม' },
   'cultural.indirectCommunicationDesc': { en: 'Direct criticism or confrontation is often avoided. Meaning is conveyed through context, tone, and what is left unsaid.', th: 'การวิพากษ์วิจารณ์โดยตรงหรือการเผชิญหน้ามักจะถูกหลีกเลี่ยง ความหมายถูกสื่อผ่านบริบท น้ำเสียง และสิ่งที่ไม่ได้พูด' },
   'cultural.polychronicTime': { en: 'Polychronic Time Perception', th: 'การรับรู้เวลาหลายมิติ' },
-  'cultural.polychronicTimeDesc': { en: 'Time is viewed relationally rather than linearly. Workshops need to accommodate relational norms where discussion, consensus, and hearing everyone are prioritized. This may require less strictly task-structured approaches than Western practitioners are accustomed to.', th: 'เวลาถูกมองในเชิงความสัมพันธ์มากกว่าเชิงเส้น เวิร์กช็อปต้องรองรับบรรทัดฐานเชิงความสัมพันธ์ที่การอภิปราย ฉันทามติ และการรับฟังทุกคนเป็นสิ่งสำคัญ นี่อาจต้องการแนวทางที่มีโครงสร้างงานน้อยกว่าที่ผู้ปฏิบัติงานตะวันตกคุ้นเคย' },
+  'cultural.polychronicTimeDesc': { en: 'Time is relational, not linear. Workshops prioritize discussion and consensus over strict schedules.', th: 'เวลาเป็นความสัมพันธ์ ไม่ใช่เชิงเส้น เวิร์กช็อปให้ความสำคัญกับการอภิปรายและฉันทามติมากกว่าตารางเวลาที่เข้มงวด' },
 
   // Method Detail
   'methodDetail.backToHome': { en: 'Back to Home', th: 'กลับไปหน้าแรก' },

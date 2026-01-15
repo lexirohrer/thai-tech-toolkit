@@ -104,6 +104,11 @@ const CaseStudyDetail = () => {
                 <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
                   {language === 'en' ? study.challenge : (study.challengeThai || study.challenge)}
                 </p>
+                {study.id === 'smart-pole-motorbike-taxi' && (
+                  <div className="mt-6">
+                    <img src="/smart-station-mapview.png" alt="Smart Station Map View" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
               </div>
 
               {/* Approach */}
@@ -124,6 +129,23 @@ const CaseStudyDetail = () => {
                   <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <img src="/BBx_Songkhla1.png" alt="BridgeBox Songkhla" className="w-full h-auto rounded-lg" />
                     <img src="/BBx_workshop1.png" alt="BridgeBox Workshop" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {study.id === 'clean-energy-solar' && (
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <img src="/process1.png" alt="Clean Energy Process 1" className="w-full h-auto rounded-lg" />
+                    <img src="/process2.png" alt="Clean Energy Process 2" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {study.id === 'smart-pole-motorbike-taxi' && (
+                  <div className="mt-6 space-y-4">
+                    <div>
+                      <img src="/smart-station-parts.png" alt="Smart Station Parts" className="w-full h-auto rounded-lg" />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <img src="/Writing-ex.jpeg" alt="Writing Exercise" className="w-full h-auto rounded-lg" />
+                      <img src="/worksheet-ex.jpeg" alt="Worksheet Example" className="w-full h-auto rounded-lg" />
+                    </div>
                   </div>
                 )}
               </div>
@@ -150,6 +172,12 @@ const CaseStudyDetail = () => {
                   <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <img src="/BBx_sketch1.png" alt="BridgeBox Sketch 1" className="w-full h-auto rounded-lg" />
                     <img src="/BBx_sketch2.png" alt="BridgeBox Sketch 2" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {study.id === 'clean-energy-solar' && (
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <img src="/LineExample.png" alt="Line Example" className="w-full h-auto rounded-lg" />
+                    <img src="/Line-bot.png" alt="Line Bot" className="w-full h-auto rounded-lg" />
                   </div>
                 )}
               </div>

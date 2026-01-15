@@ -1,5 +1,6 @@
 export type Phase = 'discover' | 'define' | 'develop' | 'deliver';
 export type Difficulty = 1 | 2 | 3;
+export type DigitalLiteracy = 'low' | 'medium' | 'high';
 
 export interface Method {
   id: string;
@@ -11,6 +12,8 @@ export interface Method {
   difficulty: Difficulty;
   duration: string;
   participants: string;
+  participantCount: { min: number; max: number };
+  digitalLiteracy: DigitalLiteracy;
   culturalTip: string;
   culturalTipThai?: string;
   steps: string[];
@@ -18,16 +21,22 @@ export interface Method {
 }
 
 export const phaseLabels: Record<Phase, { en: string; th: string }> = {
-  discover: { en: 'Discover', th: 'ค้นพบ' },
-  define: { en: 'Define', th: 'กำหนด' },
-  develop: { en: 'Develop', th: 'พัฒนา' },
-  deliver: { en: 'Deliver', th: 'ส่งมอบ' },
+  discover: { en: 'Discovering', th: 'ค้นพบ' },
+  define: { en: 'Defining', th: 'กำหนด' },
+  develop: { en: 'Developing', th: 'พัฒนา' },
+  deliver: { en: 'Delivering', th: 'ส่งมอบ' },
 };
 
 export const difficultyLabels: Record<Difficulty, { en: string; th: string }> = {
   1: { en: 'Beginner', th: 'เริ่มต้น' },
   2: { en: 'Intermediate', th: 'ปานกลาง' },
   3: { en: 'Advanced', th: 'ขั้นสูง' },
+};
+
+export const digitalLiteracyLabels: Record<DigitalLiteracy, { en: string; th: string }> = {
+  low: { en: 'Low tech', th: 'ต่ำ' },
+  medium: { en: 'Medium tech', th: 'ปานกลาง' },
+  high: { en: 'High tech', th: 'สูง' },
 };
 
 export const methods: Method[] = [
@@ -41,6 +50,8 @@ export const methods: Method[] = [
     difficulty: 1,
     duration: '2-4 hours',
     participants: '1-2 researchers',
+    participantCount: { min: 1, max: 2 },
+    digitalLiteracy: 'low',
     culturalTip: 'In Thai contexts, maintain a respectful distance and avoid taking notes conspicuously. Consider having a local community member introduce you first to build trust.',
     culturalTipThai: 'ในบริบทไทย รักษาระยะห่างที่เคารพและหลีกเลี่ยงการจดบันทึกอย่างเด่นชัด พิจารณาให้สมาชิกชุมชนท้องถิ่นแนะนำคุณก่อนเพื่อสร้างความไว้วางใจ',
     steps: [
@@ -59,60 +70,6 @@ export const methods: Method[] = [
     ],
   },
   {
-    id: 'photo-voice',
-    name: 'Photo Voice',
-    nameThai: 'ภาพเล่าเรื่อง',
-    description: 'Participants document their experiences through photography, then share stories about their images. This indirect method allows expression without confrontational questioning.',
-    descriptionThai: 'ผู้เข้าร่วมบันทึกประสบการณ์ของพวกเขาผ่านการถ่ายภาพ แล้วแบ่งปันเรื่องราวเกี่ยวกับภาพของพวกเขา วิธีการทางอ้อมนี้ช่วยให้การแสดงออกโดยไม่ต้องใช้คำถามที่เผชิญหน้า',
-    phase: 'discover',
-    difficulty: 1,
-    duration: '1-2 weeks',
-    participants: '5-15 participants',
-    culturalTip: 'Let participants choose what to photograph freely. Group sharing sessions work well as they reduce individual pressure and encourage collective storytelling.',
-    culturalTipThai: 'ให้ผู้เข้าร่วมเลือกสิ่งที่ต้องการถ่ายภาพอย่างอิสระ เซสชันการแบ่งปันกลุ่มทำงานได้ดีเพราะลดแรงกดดันส่วนบุคคลและส่งเสริมการเล่าเรื่องร่วมกัน',
-    steps: [
-      'Provide cameras or phones to participants',
-      'Give open-ended prompts about daily life or challenges',
-      'Allow 1-2 weeks for photo collection',
-      'Facilitate group sharing sessions',
-      'Identify themes collaboratively',
-    ],
-    stepsThai: [
-      'ให้กล้องหรือโทรศัพท์แก่ผู้เข้าร่วม',
-      'ให้คำแนะนำแบบเปิดเกี่ยวกับชีวิตประจำวันหรือความท้าทาย',
-      'อนุญาตให้ใช้เวลา 1-2 สัปดาห์ในการรวบรวมภาพ',
-      'ดำเนินการเซสชันการแบ่งปันกลุ่ม',
-      'ระบุธีมร่วมกัน',
-    ],
-  },
-  {
-    id: 'journey-mapping',
-    name: 'Journey Mapping',
-    nameThai: 'การทำแผนที่ประสบการณ์',
-    description: "Visualize a person's experience over time through a process or service. Using visual tools makes abstract experiences concrete and easier to discuss.",
-    descriptionThai: 'แสดงภาพประสบการณ์ของบุคคลเมื่อเวลาผ่านไปผ่านกระบวนการหรือบริการ การใช้เครื่องมือภาพทำให้ประสบการณ์ที่เป็นนามธรรมเป็นรูปธรรมและง่ายต่อการอภิปราย',
-    phase: 'define',
-    difficulty: 2,
-    duration: '2-3 hours',
-    participants: '4-8 participants',
-    culturalTip: 'Use collaborative drawing activities where everyone contributes. This distributes "ownership" of critical feedback across the group, making it safer to express concerns.',
-    culturalTipThai: 'ใช้กิจกรรมการวาดภาพร่วมกันที่ทุกคนมีส่วนร่วม นี่จะกระจาย "ความเป็นเจ้าของ" ของข้อเสนอแนะเชิงวิพากษ์ทั่วทั้งกลุ่ม ทำให้ปลอดภัยกว่าในการแสดงความกังวล',
-    steps: [
-      'Define the journey scope and timeframe',
-      'Prepare large paper and colorful materials',
-      'Guide participants through timeline creation',
-      'Add emotional indicators at each stage',
-      'Discuss high and low points together',
-    ],
-    stepsThai: [
-      'กำหนดขอบเขตและกรอบเวลาของการเดินทาง',
-      'เตรียมกระดาษขนาดใหญ่และวัสดุที่มีสีสัน',
-      'แนะนำผู้เข้าร่วมในการสร้างไทม์ไลน์',
-      'เพิ่มตัวบ่งชี้ทางอารมณ์ในแต่ละขั้นตอน',
-      'อภิปรายจุดสูงและต่ำร่วมกัน',
-    ],
-  },
-  {
     id: 'card-sorting',
     name: 'Card Sorting',
     nameThai: 'การจัดหมวดหมู่การ์ด',
@@ -122,6 +79,8 @@ export const methods: Method[] = [
     difficulty: 1,
     duration: '45-90 minutes',
     participants: '3-6 participants',
+    participantCount: { min: 3, max: 6 },
+    digitalLiteracy: 'low',
     culturalTip: 'Frame this as a collaborative game rather than a test. Allow participants to work in pairs or small groups to reduce individual pressure.',
     culturalTipThai: 'จัดกรอบนี้เป็นเกมที่ร่วมมือกันมากกว่าการทดสอบ อนุญาตให้ผู้เข้าร่วมทำงานเป็นคู่หรือกลุ่มเล็กเพื่อลดแรงกดดันส่วนบุคคล',
     steps: [
@@ -149,6 +108,8 @@ export const methods: Method[] = [
     difficulty: 1,
     duration: '15-30 minutes',
     participants: '5-20 participants',
+    participantCount: { min: 5, max: 20 },
+    digitalLiteracy: 'low',
     culturalTip: 'Use identical dot stickers and allow simultaneous voting to maintain anonymity. This helps junior members express preferences without fear of contradicting seniors.',
     culturalTipThai: 'ใช้สติกเกอร์จุดที่เหมือนกันและอนุญาตให้ลงคะแนนพร้อมกันเพื่อรักษาความไม่ระบุตัวตน นี่ช่วยให้สมาชิกรุ่นน้องแสดงความชอบโดยไม่กลัวที่จะขัดแย้งกับรุ่นพี่',
     steps: [
@@ -176,6 +137,8 @@ export const methods: Method[] = [
     difficulty: 2,
     duration: '2-4 hours',
     participants: '3-5 participants',
+    participantCount: { min: 3, max: 5 },
+    digitalLiteracy: 'medium',
     culturalTip: 'Emphasize that rough prototypes are intentional—this signals that everything can change and reduces hesitation to give feedback.',
     culturalTipThai: 'เน้นว่าต้นแบบที่หยาบนั้นตั้งใจ—นี่ส่งสัญญาณว่าทุกอย่างสามารถเปลี่ยนแปลงได้และลดความลังเลในการให้ข้อเสนอแนะ',
     steps: [
@@ -203,6 +166,8 @@ export const methods: Method[] = [
     difficulty: 3,
     duration: '1-2 hours',
     participants: '4-8 participants',
+    participantCount: { min: 4, max: 8 },
+    digitalLiteracy: 'medium',
     culturalTip: 'Start with warm-up activities to build comfort. Allow people to volunteer for roles rather than assigning them, respecting individual comfort levels.',
     culturalTipThai: 'เริ่มต้นด้วยกิจกรรมวอร์มอัพเพื่อสร้างความสบายใจ อนุญาตให้ผู้คนอาสาสมัครรับบทบาทแทนการมอบหมายให้เคารพระดับความสบายใจของแต่ละบุคคล',
     steps: [
@@ -221,33 +186,6 @@ export const methods: Method[] = [
     ],
   },
   {
-    id: 'feedback-circles',
-    name: 'Feedback Circles',
-    nameThai: 'วงสนทนาแลกเปลี่ยน',
-    description: 'Structured group feedback sessions where comments flow in one direction around a circle. The format ensures everyone speaks and creates balanced participation.',
-    descriptionThai: 'เซสชันข้อเสนอแนะกลุ่มที่มีโครงสร้างซึ่งความคิดเห็นไหลไปในทิศทางเดียวรอบวง รูปแบบนี้ทำให้แน่ใจว่าทุกคนพูดและสร้างการมีส่วนร่วมที่สมดุล',
-    phase: 'deliver',
-    difficulty: 2,
-    duration: '1-2 hours',
-    participants: '6-12 participants',
-    culturalTip: 'Start with appreciations before moving to suggestions. Use "I wonder if..." language rather than direct criticism to maintain face.',
-    culturalTipThai: 'เริ่มต้นด้วยการชื่นชมก่อนย้ายไปยังข้อเสนอแนะ ใช้ภาษาที่ว่า "ฉันสงสัยว่า..." แทนการวิพากษ์วิจารณ์โดยตรงเพื่อรักษาหน้า',
-    steps: [
-      'Arrange seating in a circle',
-      'Present the solution or prototype',
-      'Go around for appreciations first',
-      'Second round for gentle suggestions',
-      'Thank each contributor explicitly',
-    ],
-    stepsThai: [
-      'จัดที่นั่งเป็นวงกลม',
-      'นำเสนอโซลูชันหรือต้นแบบ',
-      'วนรอบเพื่อการชื่นชมก่อน',
-      'รอบที่สองสำหรับข้อเสนอแนะที่นุ่มนวล',
-      'ขอบคุณผู้มีส่วนร่วมแต่ละคนอย่างชัดเจน',
-    ],
-  },
-  {
     id: 'pilot-testing',
     name: 'Pilot Testing',
     nameThai: 'การทดสอบนำร่อง',
@@ -257,6 +195,8 @@ export const methods: Method[] = [
     difficulty: 3,
     duration: '1-4 weeks',
     participants: '10-30 users',
+    participantCount: { min: 10, max: 30 },
+    digitalLiteracy: 'high',
     culturalTip: 'Position pilot testing as a learning opportunity for the research team, not an evaluation of users. This reduces pressure and encourages honest feedback.',
     culturalTipThai: 'วางตำแหน่งการทดสอบนำร่องเป็นโอกาสการเรียนรู้สำหรับทีมวิจัย ไม่ใช่การประเมินผู้ใช้ นี่ช่วยลดแรงกดดันและส่งเสริมข้อเสนอแนะที่ซื่อสัตย์',
     steps: [
@@ -272,6 +212,91 @@ export const methods: Method[] = [
       'ดำเนินการด้วยการสนับสนุนอย่างใกล้ชิด',
       'รวบรวมข้อเสนอแนะอย่างต่อเนื่อง',
       'บันทึกการเรียนรู้สำหรับการทำซ้ำ',
+    ],
+  },
+  {
+    id: 'write-then-speak',
+    name: 'Write Then Speak',
+    nameThai: 'เขียนก่อนพูด',
+    description: 'Reduce pressure to give feedback directly by having participants write or sketch first, then discuss in pairs before sharing with the group. This allows individual thinking before group influence.',
+    descriptionThai: 'ลดแรงกดดันในการให้ข้อเสนอแนะโดยตรงโดยให้ผู้เข้าร่วมเขียนหรือวาดภาพก่อน จากนั้นอภิปรายเป็นคู่ก่อนแบ่งปันกับกลุ่ม วิธีนี้ช่วยให้มีการคิดเป็นรายบุคคลก่อนได้รับอิทธิพลจากกลุ่ม',
+    phase: 'discover',
+    difficulty: 1,
+    duration: '30-60 minutes',
+    participants: '4-12 participants',
+    participantCount: { min: 4, max: 12 },
+    digitalLiteracy: 'low',
+    culturalTip: 'Pair participants with similar seniority levels. After writing, ask quieter members to share what their partner said first, which builds confidence before sharing their own ideas.',
+    culturalTipThai: 'จับคู่ผู้เข้าร่วมที่มีระดับอาวุโสใกล้เคียงกัน หลังเขียน ขอให้สมาชิกที่เงียบกว่าบอกสิ่งที่คู่ของพวกเขาพูดก่อน ซึ่งสร้างความมั่นใจก่อนแบ่งปันความคิดของตัวเอง',
+    steps: [
+      'Begin with 2-3 minutes of silent writing or sketching on a worksheet',
+      'Pair participants together for 1-2 minutes to discuss what they wrote',
+      'Ask each participant to share something interesting their partner said',
+      'Collect and review written materials after the workshop',
+    ],
+    stepsThai: [
+      'เริ่มต้นด้วยการเขียนหรือวาดภาพเงียบๆ 2-3 นาทีบนเวิร์กชีต',
+      'จับคู่ผู้เข้าร่วมกัน 1-2 นาทีเพื่ออภิปรายสิ่งที่พวกเขาเขียน',
+      'ขอให้ผู้เข้าร่วมแต่ละคนแบ่งปันสิ่งที่น่าสนใจที่คู่ของพวกเขาพูด',
+      'รวบรวมและทบทวนเอกสารที่เขียนหลังเวิร์กช็อป',
+    ],
+  },
+  {
+    id: 'choose-from-two',
+    name: 'Comparative Evaluation',
+    nameThai: 'เลือกจากสองตัวเลือก',
+    description: 'Elicit honest feedback on designs by presenting two options and asking users to choose. Then redirect their preference into critique of the other option using their own words.',
+    descriptionThai: 'ดึงข้อเสนอแนะที่ซื่อสัตย์เกี่ยวกับการออกแบบโดยนำเสนอสองตัวเลือกและขอให้ผู้ใช้เลือก จากนั้นเปลี่ยนความชอบของพวกเขาเป็นการวิจารณ์ตัวเลือกอื่นโดยใช้คำพูดของพวกเขาเอง',
+    phase: 'deliver',
+    difficulty: 2,
+    duration: '1-2 hours',
+    participants: '4-8 participants',
+    participantCount: { min: 4, max: 8 },
+    digitalLiteracy: 'medium',
+    culturalTip: 'Ask users to write down their preference before sharing. Reframe questions using the user\'s own language to avoid biasing them. This allows participants to avoid saying "this is bad" while still articulating what they do and don\'t like.',
+    culturalTipThai: 'ขอให้ผู้ใช้เขียนความชอบของพวกเขาก่อนแบ่งปัน เปลี่ยนกรอบคำถามโดยใช้ภาษาของผู้ใช้เองเพื่อหลีกเลี่ยงการทำให้เกิดอคติ วิธีนี้ช่วยให้ผู้เข้าร่วมหลีกเลี่ยงการพูดว่า "นี่ไม่ดี" ในขณะที่ยังสามารถอธิบายสิ่งที่พวกเขาชอบและไม่ชอบ',
+    steps: [
+      'Create two versions of a design, Option A and Option B',
+      'Present both options to users and ask which they prefer',
+      'Ask users to explain why they prefer their chosen option',
+      'Redirect their feedback to critique the other option using their own words',
+      'Repeat with different participants to understand root challenges in each design',
+    ],
+    stepsThai: [
+      'สร้างสองเวอร์ชันของการออกแบบ ตัวเลือก A และตัวเลือก B',
+      'นำเสนอทั้งสองตัวเลือกให้ผู้ใช้และถามว่าพวกเขาชอบตัวเลือกใด',
+      'ถามผู้ใช้ให้อธิบายว่าทำไมพวกเขาถึงชอบตัวเลือกที่เลือก',
+      'เปลี่ยนข้อเสนอแนะของพวกเขาเป็นการวิจารณ์ตัวเลือกอื่นโดยใช้คำพูดของพวกเขาเอง',
+      'ทำซ้ำกับผู้เข้าร่วมที่แตกต่างกันเพื่อทำความเข้าใจความท้าทายหลักในการออกแบบแต่ละแบบ',
+    ],
+  },
+  {
+    id: 'worksheets',
+    name: 'Worksheets',
+    nameThai: 'เวิร์กชีต',
+    description: 'Provide structure for ideation or feedback using worksheets with clear instructions. Worksheets reduce uncertainty, boost confidence for first-time participants, and allow quiet thinking time.',
+    descriptionThai: 'ให้โครงสร้างสำหรับการสร้างไอเดียหรือข้อเสนอแนะโดยใช้เวิร์กชีตพร้อมคำแนะนำที่ชัดเจน เวิร์กชีตช่วยลดความไม่แน่นอน เพิ่มความมั่นใจสำหรับผู้เข้าร่วมครั้งแรก และให้เวลาคิดเงียบๆ',
+    phase: 'discover',
+    difficulty: 1,
+    duration: '1-2 hours',
+    participants: '4-12 participants',
+    participantCount: { min: 4, max: 12 },
+    digitalLiteracy: 'low',
+    culturalTip: 'Write all instructions on the worksheet in all languages used. Include images or diagrams of the system being critiqued. Don\'t put lines in blank spaces—allow users to write or draw, whichever they prefer.',
+    culturalTipThai: 'เขียนคำแนะนำทั้งหมดบนเวิร์กชีตในทุกภาษาที่ใช้ รวมภาพหรือแผนภาพของระบบที่กำลังถูกวิจารณ์ อย่าใส่เส้นในช่องว่าง—ให้ผู้ใช้เขียนหรือวาดตามที่พวกเขาต้องการ',
+    steps: [
+      'Create worksheets with all verbal instructions written on paper',
+      'Include a space for participants to write their names',
+      'Put different activities on separate worksheets',
+      'When gathering feedback, include images or diagrams of the system',
+      'Provide adequate time and extend if participants are still writing',
+    ],
+    stepsThai: [
+      'สร้างเวิร์กชีตพร้อมคำแนะนำด้วยวาจาทั้งหมดที่เขียนบนกระดาษ',
+      'รวมพื้นที่สำหรับผู้เข้าร่วมเขียนชื่อของพวกเขา',
+      'ใส่กิจกรรมต่างๆ บนเวิร์กชีตแยกกัน',
+      'เมื่อรวบรวมข้อเสนอแนะ ให้รวมภาพหรือแผนภาพของระบบ',
+      'ให้เวลาที่เพียงพอและขยายเวลาหากผู้เข้าร่วมยังเขียนอยู่',
     ],
   },
 ];

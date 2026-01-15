@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Clock, Users, ArrowRight } from 'lucide-react';
-import { Method, phaseLabels, difficultyLabels } from '@/data/methods';
+import { Method, phaseLabels, difficultyLabels, digitalLiteracyLabels } from '@/data/methods';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -24,17 +24,26 @@ export function MethodCard({ method }: MethodCardProps) {
     3: 'difficulty-advanced',
   };
 
+  const digitalLiteracyClasses = {
+    low: 'digital-literacy-low',
+    medium: 'digital-literacy-medium',
+    high: 'digital-literacy-high',
+  };
+
   return (
     <Link
       to={`/methods/${method.id}`}
       className="method-card group block"
     >
-      <div className="flex items-start justify-between gap-3 mb-4">
+      <div className="flex items-start gap-2 flex-wrap mb-4">
         <span className={cn('phase-badge', phaseClasses[method.phase])}>
           {phaseLabels[method.phase][language]}
         </span>
         <span className={cn('difficulty-badge', difficultyClasses[method.difficulty])}>
           {difficultyLabels[method.difficulty][language]}
+        </span>
+        <span className={cn('digital-literacy-badge', digitalLiteracyClasses[method.digitalLiteracy])}>
+          {digitalLiteracyLabels[method.digitalLiteracy][language]}
         </span>
       </div>
 
