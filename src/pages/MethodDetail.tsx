@@ -74,13 +74,13 @@ const MethodDetail = () => {
       },
       'card-sorting': {
         en: [
-          'Cards with concepts, features, or ideas written on them',
+          'Cards or sticky notes with concepts, features, or ideas written on them',
           'Large table or wall space for organizing cards',
           'Markers or pens for labeling categories',
           'Notebook for documenting groupings and reasoning',
         ],
         th: [
-          'การ์ดที่มีแนวคิด คุณสมบัติ หรือความคิดเขียนไว้',
+          'การ์ดหรือโน้ตติดที่มีแนวคิด คุณสมบัติ หรือความคิดเขียนไว้',
           'โต๊ะขนาดใหญ่หรือพื้นที่ผนังสำหรับจัดระเบียบการ์ด',
           'ปากกาหรือปากกามาร์คเกอร์สำหรับติดป้ายหมวดหมู่',
           'สมุดบันทึกสำหรับบันทึกการจัดกลุ่มและเหตุผล',
@@ -91,13 +91,13 @@ const MethodDetail = () => {
           'Display board or wall space for options',
           'Dot stickers (all identical)',
           'Markers or pens for labeling options',
-          'Notebook for documenting results',
+          'Paper for participants to write on',
         ],
         th: [
           'กระดานแสดงผลหรือพื้นที่ผนังสำหรับตัวเลือก',
           'สติกเกอร์จุด (เหมือนกันทั้งหมด)',
           'ปากกาหรือปากกามาร์คเกอร์สำหรับติดป้ายตัวเลือก',
-          'สมุดบันทึกสำหรับบันทึกผลลัพธ์',
+          'กระดาษสำหรับผู้เข้าร่วมเขียน',
         ],
       },
       'paper-prototyping': {
@@ -118,30 +118,28 @@ const MethodDetail = () => {
       },
       'role-play-simulation': {
         en: [
-          'Props or objects to represent the system or service',
+          'The product or service you are seeking feedback on',
           'Space for participants to move around',
-          'Notebook for documenting observations',
           'Camera or phone for recording (if permitted)',
         ],
         th: [
-          'อุปกรณ์ประกอบหรือวัตถุเพื่อแสดงระบบหรือบริการ',
+          'ผลิตภัณฑ์หรือบริการที่คุณกำลังขอข้อเสนอแนะ',
           'พื้นที่สำหรับผู้เข้าร่วมเคลื่อนไหว',
-          'สมุดบันทึกสำหรับบันทึกการสังเกต',
           'กล้องหรือโทรศัพท์สำหรับบันทึก (หากได้รับอนุญาต)',
         ],
       },
       'pilot-testing': {
         en: [
-          'Working prototype or system',
-          'Devices for participants to use',
-          'Notebook or forms for documenting feedback',
-          'Camera or screen recording software (if needed)',
+          'A working prototype or system',
+          'A small group of trusted pilot users',
+          'Field notes or simple observation checklists',
+          'Optional short feedback prompts',
         ],
         th: [
           'โปรโตไทป์หรือระบบที่ใช้งานได้',
-          'อุปกรณ์สำหรับผู้เข้าร่วมใช้',
-          'สมุดบันทึกหรือแบบฟอร์มสำหรับบันทึกข้อเสนอแนะ',
-          'กล้องหรือซอฟต์แวร์บันทึกหน้าจอ (หากจำเป็น)',
+          'กลุ่มผู้ใช้ทดสอบนำร่องที่เชื่อถือได้จำนวนเล็กน้อย',
+          'บันทึกภาคสนามหรือรายการตรวจสอบการสังเกตง่ายๆ',
+          'คำแนะนำข้อเสนอแนะสั้นๆ (ไม่บังคับ)',
         ],
       },
       'write-then-speak': {
@@ -161,12 +159,12 @@ const MethodDetail = () => {
       'choose-from-two': {
         en: [
           'Two versions of the design (Option A and Option B)',
-          'Display materials (printed or digital)',
+          'A way to display materials (print or digital)',
           'Pens or pencils for participants to write notes',
         ],
         th: [
           'สองเวอร์ชันของการออกแบบ (ตัวเลือก A และตัวเลือก B)',
-          'วัสดุแสดงผล (พิมพ์หรือดิจิทัล)',
+          'วิธีแสดงวัสดุ (พิมพ์หรือดิจิทัล)',
           'ปากกาหรือดินสอสำหรับผู้เข้าร่วมเขียนบันทึก',
         ],
       },
@@ -182,6 +180,20 @@ const MethodDetail = () => {
           'ภาพหรือแผนภาพของระบบ (หากรวบรวมข้อเสนอแนะ)',
           'สมุดบันทึกสำหรับรวบรวมเวิร์กชีตที่เสร็จสมบูรณ์',
           'เวิร์กชีต',
+        ],
+      },
+      'diary-study': {
+        en: [
+          'Notebooks, pens, and pencils for participants',
+          'or, a LINE account or WhatsApp account set up to receive diary submissions',
+          'Phone or camera for participants',
+          'Simple prompts or questions to guide entries',
+        ],
+        th: [
+          'สมุดบันทึก ปากกา และดินสอสำหรับผู้เข้าร่วม',
+          'หรือบัญชี LINE หรือบัญชี WhatsApp ที่ตั้งค่าเพื่อรับการส่งไดอารี่',
+          'โทรศัพท์หรือกล้องสำหรับผู้เข้าร่วม',
+          'คำแนะนำหรือคำถามง่ายๆ เพื่อแนะนำรายการ',
         ],
       },
     };
@@ -200,7 +212,7 @@ const MethodDetail = () => {
           <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors pt-6"
             >
               <ArrowLeft size={18} />
               {t('methodDetail.backToHome')}
@@ -269,6 +281,17 @@ const MethodDetail = () => {
                     <img src="/Structured-Sketch-sheet.png" alt="Structured Sketch Sheet" className="w-1/2 h-auto rounded-lg" />
                   </div>
                 )}
+                {method.id === 'card-sorting' && (
+                  <div className="mt-6">
+                    <img src="/card-sorting.jpg" alt="Card Sorting" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {method.id === 'diary-study' && (
+                  <div className="mt-6 flex gap-4">
+                    <img src="/diary-study.jpg" alt="Diary Study" className="w-1/2 h-auto rounded-lg" />
+                    <img src="/diary-study-phone.jpg" alt="Diary Study Phone" className="w-1/2 h-auto rounded-lg" />
+                  </div>
+                )}
               </div>
 
               {/* When to use */}
@@ -280,12 +303,15 @@ const MethodDetail = () => {
                   {method.id === 'worksheets' && (language === 'en'
                     ? 'Use this method when you want to give users silent time to think and ideate, rather than having them come up with ideas or sketch on the spot. It\'s especially good for people who have never participated in a design workshop, and for users with lower digital literacy or lower tech skills. Structured sketching eliminates uncertainty and increases confidence for first-time participants. It also allows users who may be participating in the workshop in a second language to read instructions as well as hear them verbally.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้ใช้คิดและสร้างไอเดียเงียบๆ แทนที่จะให้พวกเขาคิดไอเดียหรือวาดภาพทันที เหมาะอย่างยิ่งสำหรับผู้ที่ไม่เคยเข้าร่วมเวิร์กช็อปการออกแบบมาก่อน และสำหรับผู้ใช้ที่มีทักษะดิจิทัลต่ำหรือทักษะทางเทคนิคต่ำ การวาดภาพที่มีโครงสร้างช่วยขจัดความไม่แน่นอนและเพิ่มความมั่นใจสำหรับผู้เข้าร่วมครั้งแรก นอกจากนี้ยังช่วยให้ผู้ใช้ที่อาจเข้าร่วมเวิร์กช็อปในภาษาที่สองสามารถอ่านคำแนะนำได้เช่นเดียวกับการได้ยินด้วยวาจา')}
-                  {method.phase === 'discover' && method.id !== 'write-then-speak' && method.id !== 'worksheets' && (language === 'en' 
+                  {method.phase === 'discover' && method.id !== 'write-then-speak' && method.id !== 'worksheets' && method.id !== 'diary-study' && (language === 'en' 
                     ? 'Use this method when you need to understand how people behave in their natural environment. It works well at the beginning of a project when you want to observe real behaviors without influencing them. It can also be used to uncover problems with existing products or services that don\'t emerge in controlled research contexts like interviews.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการเข้าใจว่าผู้คนมีพฤติกรรมอย่างไรในสภาพแวดล้อมตามธรรมชาติ วิธีนี้ใช้ได้ดีในช่วงเริ่มต้นของโครงการเมื่อคุณต้องการสังเกตพฤติกรรมจริงโดยไม่กระทบต่อพวกเขา นอกจากนี้ยังสามารถใช้เพื่อเปิดเผยปัญหากับผลิตภัณฑ์หรือบริการที่มีอยู่ซึ่งไม่ปรากฏในบริบทการวิจัยที่ควบคุมเช่นการสัมภาษณ์')}
                   {method.id === 'write-then-speak' && (language === 'en'
                     ? 'Use this method when you want to give quieter participants time to think and participate more meaningfully. It\'s especially valuable when working in contexts with hierarchy or social harmony constraints, as it creates written artifacts that capture ideas people might not feel comfortable voicing aloud. The written responses allow you to review what people really think, beyond what they\'re willing to say in group discussions.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้เข้าร่วมที่เงียบกว่าคิดและมีส่วนร่วมอย่างมีความหมายมากขึ้น มีคุณค่าอย่างยิ่งเมื่อทำงานในบริบทที่มีข้อจำกัดของลำดับชั้นหรือความสามัคคีทางสังคม เนื่องจากสร้างสิ่งประดิษฐ์ที่เป็นลายลักษณ์อักษรที่จับไอเดียที่ผู้คนอาจไม่รู้สึกสะดวกใจที่จะพูดออกมาดังๆ คำตอบที่เป็นลายลักษณ์อักษรช่วยให้คุณทบทวนสิ่งที่ผู้คนคิดจริงๆ เกินกว่าสิ่งที่พวกเขายินดีพูดในการอภิปรายกลุ่ม')}
+                  {method.id === 'diary-study' && (language === 'en'
+                    ? 'Use this method when you need to understand behaviors or experiences that happen over time or in different contexts. Diary studies capture moments that people might forget in interviews, and they let you see patterns that emerge across days or weeks. Great for understanding routines, emotional responses, or how people use products in their daily lives.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการเข้าใจพฤติกรรมหรือประสบการณ์ที่เกิดขึ้นตลอดเวลาหรือในบริบทที่แตกต่างกัน การศึกษาไดอารี่จับช่วงเวลาที่ผู้คนอาจลืมในการสัมภาษณ์ และช่วยให้คุณเห็นรูปแบบที่เกิดขึ้นตลอดหลายวันหรือหลายสัปดาห์ เหมาะสำหรับการทำความเข้าใจกิจวัตร การตอบสนองทางอารมณ์ หรือวิธีที่ผู้คนใช้ผลิตภัณฑ์ในชีวิตประจำวัน')}
                   {method.phase === 'define' && (language === 'en'
                     ? 'Use this method when you need to organize information or understand how people think about concepts. It helps clarify problems and structure your understanding.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการจัดระเบียบข้อมูลหรือเข้าใจว่าผู้คนคิดเกี่ยวกับแนวคิดอย่างไร ช่วยให้ชัดเจนเกี่ยวกับปัญหาและโครงสร้างความเข้าใจของคุณ')}
@@ -295,7 +321,10 @@ const MethodDetail = () => {
                   {method.id === 'worksheets' && (language === 'en'
                     ? 'Use this method when you want to give users silent time to think and ideate, rather than having them come up with ideas or sketch on the spot. It\'s especially good for people who have never participated in a design workshop, and for users with lower digital literacy or lower tech skills. Structured sketching eliminates uncertainty and increases confidence for first-time participants. It also allows users who may be participating in the workshop in a second language to read instructions as well as hear them verbally.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้ใช้คิดและสร้างไอเดียเงียบๆ แทนที่จะให้พวกเขาคิดไอเดียหรือวาดภาพทันที เหมาะอย่างยิ่งสำหรับผู้ที่ไม่เคยเข้าร่วมเวิร์กช็อปการออกแบบมาก่อน และสำหรับผู้ใช้ที่มีทักษะดิจิทัลต่ำหรือทักษะทางเทคนิคต่ำ การวาดภาพที่มีโครงสร้างช่วยขจัดความไม่แน่นอนและเพิ่มความมั่นใจสำหรับผู้เข้าร่วมครั้งแรก นอกจากนี้ยังช่วยให้ผู้ใช้ที่อาจเข้าร่วมเวิร์กช็อปในภาษาที่สองสามารถอ่านคำแนะนำได้เช่นเดียวกับการได้ยินด้วยวาจา')}
-                  {method.phase === 'ideate' && method.id !== 'paper-prototyping' && method.id !== 'worksheets' && (language === 'en'
+                  {method.id === 'role-play-simulation' && (language === 'en'
+                    ? 'Use this method when you need real critical feedback from users, but they will only give polite or vague feedback.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการข้อเสนอแนะเชิงวิพากษ์ที่แท้จริงจากผู้ใช้ แต่พวกเขาจะให้เฉพาะข้อเสนอแนะที่สุภาพหรือคลุมเครือ')}
+                  {method.phase === 'ideate' && method.id !== 'paper-prototyping' && method.id !== 'worksheets' && method.id !== 'role-play-simulation' && (language === 'en'
                     ? 'Use this method when you are generating ideas and exploring different possibilities. It helps you brainstorm solutions and test concepts before committing to a specific direction.'
                     : 'ใช้วิธีนี้เมื่อคุณกำลังสร้างไอเดียและสำรวจความเป็นไปได้ที่แตกต่างกัน ช่วยให้คุณระดมสมองหาโซลูชันและทดสอบแนวคิดก่อนที่จะมุ่งมั่นกับทิศทางเฉพาะ')}
                   {method.phase === 'develop' && (language === 'en'
@@ -304,10 +333,29 @@ const MethodDetail = () => {
                   {method.phase === 'deliver' && (language === 'en'
                     ? 'Use this method when you are ready to test your solution with users and gather final feedback before launch.'
                     : 'ใช้วิธีนี้เมื่อคุณพร้อมที่จะทดสอบโซลูชันของคุณกับผู้ใช้และรวบรวมข้อเสนอแนะสุดท้ายก่อนเปิดตัว')}
-                  {method.phase === 'evaluate' && (language === 'en'
+                  {method.id === 'pilot-testing' && (language === 'en'
+                    ? 'A system is close to launch and needs real-world testing, and you want to catch practical issues before scaling. Pilot testing works especially well for public sector, infrastructure, or organizational tools.'
+                    : 'ระบบใกล้จะเปิดตัวและต้องการการทดสอบในโลกแห่งความเป็นจริง และคุณต้องการจับปัญหาทางปฏิบัติก่อนการขยายขนาด การทดสอบนำร่องทำงานได้ดีเป็นพิเศษสำหรับเครื่องมือภาครัฐ โครงสร้างพื้นฐาน หรือองค์กร')}
+                  {method.phase === 'evaluate' && method.id !== 'choose-from-two' && method.id !== 'dot-voting' && method.id !== 'pilot-testing' && (language === 'en'
                     ? 'Use this method when you need to assess solutions, gather feedback, or make decisions about which direction to pursue.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการประเมินโซลูชัน รวบรวมข้อเสนอแนะ หรือตัดสินใจเกี่ยวกับทิศทางที่ควรดำเนินการ')}
+                  {method.id === 'dot-voting' && (language === 'en'
+                    ? 'Use this method when you need to assess solutions, gather feedback, or make decisions about which direction to pursue. Dot voting works particularly well after other methods in the toolkit that generate many ideas, helping you align participants and focus on the most important options.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการประเมินโซลูชัน รวบรวมข้อเสนอแนะ หรือตัดสินใจเกี่ยวกับทิศทางที่ควรดำเนินการ การลงคะแนนด้วยจุดทำงานได้ดีเป็นพิเศษหลังจากวิธีอื่นๆ ในชุดเครื่องมือที่สร้างไอเดียจำนวนมาก ช่วยให้คุณจัดแนวผู้เข้าร่วมและมุ่งเน้นที่ตัวเลือกที่สำคัญที่สุด')}
+                  {method.id === 'choose-from-two' && (language === 'en'
+                    ? 'Use this method when you need to gather honest feedback on designs, especially in contexts with hierarchy or social harmony sensitivity. It allows users to express preferences without direct critique, making it valuable when users may be giving feedback to the person who designed it. This method becomes powerful when used to understand why users prefer one version over the other, not just to choose one option.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการรวบรวมข้อเสนอแนะที่ซื่อสัตย์เกี่ยวกับการออกแบบ โดยเฉพาะในบริบทที่มีความอ่อนไหวต่อลำดับชั้นหรือความสามัคคีทางสังคม ช่วยให้ผู้ใช้แสดงความชอบโดยไม่ต้องวิจารณ์โดยตรง ทำให้มีคุณค่าเมื่อผู้ใช้อาจกำลังให้ข้อเสนอแนะกับคนที่ออกแบบ วิธีนี้มีพลังเมื่อใช้เพื่อทำความเข้าใจว่าทำไมผู้ใช้ชอบเวอร์ชันหนึ่งมากกว่าอีกเวอร์ชัน ไม่ใช่แค่เลือกตัวเลือกหนึ่ง')}
                 </p>
+                {method.id === 'choose-from-two' && (
+                  <div className="mt-6">
+                    <img src="/choose-from-two.png" alt="Comparative Evaluation" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {method.id === 'dot-voting' && (
+                  <div className="mt-6">
+                    <img src="/Dot-voting.png" alt="Dot Voting" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
               </div>
 
               {/* Materials */}
@@ -380,8 +428,8 @@ const MethodDetail = () => {
                         <div className="mt-6">
                           <img src="/sketch-worksheet.jpeg" alt="Sketch Worksheet Example" className="w-full h-auto rounded-lg" />
                         </div>
-                        <div className="mt-6 pt-6 p-4 rounded-lg bg-[#CFE2D7] border border-[#29563C]/30 flex items-center gap-3">
-                          <Lightbulb className="w-5 h-5 text-[#29563C] flex-shrink-0" />
+                        <div className="mt-6 pt-6 p-4 rounded-lg bg-[#CFE2D7] border border-[#29563C]/30 flex items-start gap-3">
+                          <Lightbulb className="w-5 h-5 text-[#29563C] flex-shrink-0 self-center" />
                           <div>
                             <p className="font-semibold text-[#29563C] mb-2">
                               {language === 'en' ? 'Tip:' : 'เคล็ดลับ:'}
@@ -396,6 +444,30 @@ const MethodDetail = () => {
                       </div>
                     </>
                   )}
+                </div>
+              )}
+
+              {/* Field Notes Sheets */}
+              {method.id === 'pilot-testing' && (
+                <div className="mb-12">
+                  <div className="flex gap-4">
+                    <button
+                      className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                      onClick={() => {
+                        window.open('https://docs.google.com/document/d/1SncuUQ0q5psNMscEM0Yi_fIoOL5jfHBxhtjJp6yp-3c/edit?usp=sharing', '_blank');
+                      }}
+                    >
+                      English Field Notes Sheet
+                    </button>
+                    <button
+                      className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                      onClick={() => {
+                        window.open('https://docs.google.com/document/d/1C_Fx3bTraDCMgWMb3MbeDOnSL7Ege8gmPBxSxE8u07k/edit?usp=sharing', '_blank');
+                      }}
+                    >
+                      การ์ดบันทึกภาคสนามภาษาไทย
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -489,21 +561,73 @@ const MethodDetail = () => {
                               </>
                             )}
                           </div>
-                          <p className="text-muted-foreground leading-relaxed mb-3">
+                          <p className="text-muted-foreground leading-relaxed">
                             {language === 'en' ? (
                               <> <strong>Root Issue:</strong> Too much text on version B. Notice that the facilitator had to ask multiple times to understand the root cause.</>
                             ) : (
                               <> <strong>ปัญหาหลัก:</strong> มีข้อความมากเกินไปในเวอร์ชัน B สังเกตว่าผู้ดำเนินการต้องถามหลายครั้งเพื่อเข้าใจสาเหตุหลัก</>
                             )}
                           </p>
-                          <p className="text-muted-foreground leading-relaxed">
+                        </div>
+                      ) : method.id === 'diary-study' && index === 4 ? (
+                        <div className="flex-1">
+                          <p className="text-muted-foreground leading-relaxed pt-1 mb-3">
+                            {language === 'en'
+                              ? 'Send a daily or weekly prompt to participants. Examples of prompts include:'
+                              : 'ส่งคำแนะนำรายวันหรือรายสัปดาห์ให้ผู้เข้าร่วม ตัวอย่างคำแนะนำ ได้แก่:'}
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-muted-foreground leading-relaxed ml-4">
                             {language === 'en' ? (
-                              <>Don't just use Comparative Evaluation to choose one option and build it - this method becomes powerful when it's used to understand <em>why</em> users prefer one version over the other. Usually, the final design will include desirable aspects from each option, based on user feedback on each.</>
+                              <>
+                                <li>"How did using [product/service] today make you feel? Why?"</li>
+                                <li>"Write about a moment when you felt confused using [product/service]."</li>
+                                <li>"Describe any moments where you've wished [product/service] worked differently."</li>
+                              </>
                             ) : (
-                              <>อย่าใช้การประเมินเปรียบเทียบเพียงเพื่อเลือกตัวเลือกหนึ่งและสร้างมัน - วิธีนี้มีพลังเมื่อใช้เพื่อทำความเข้าใจ<em>ทำไม</em>ผู้ใช้ชอบเวอร์ชันหนึ่งมากกว่าอีกเวอร์ชัน โดยปกติการออกแบบสุดท้ายจะรวมแง่มุมที่พึงประสงค์จากแต่ละตัวเลือก ตามข้อเสนอแนะของผู้ใช้เกี่ยวกับแต่ละตัวเลือก</>
+                              <>
+                                <li>"การใช้ [ผลิตภัณฑ์/บริการ] วันนี้ทำให้คุณรู้สึกอย่างไร? ทำไม?"</li>
+                                <li>"เขียนเกี่ยวกับช่วงเวลาที่คุณรู้สึกสับสนเมื่อใช้ [ผลิตภัณฑ์/บริการ]"</li>
+                                <li>"อธิบายช่วงเวลาใดๆ ที่คุณหวังว่า [ผลิตภัณฑ์/บริการ] จะทำงานแตกต่างออกไป"</li>
+                              </>
                             )}
+                          </ul>
+                        </div>
+                      ) : method.id === 'pilot-testing' && index === 3 ? (
+                        <div className="flex-1">
+                          <p className="text-muted-foreground leading-relaxed pt-1 mb-3">
+                            {language === 'en'
+                              ? 'Ask questions like:'
+                              : 'ถามคำถามเช่น:'}
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-muted-foreground leading-relaxed ml-4">
+                            {language === 'en' ? (
+                              <>
+                                <li>"What felt easy to use?"</li>
+                                <li>"What took more time than expected?"</li>
+                                <li>"If others used this, what might confuse them?"</li>
+                              </>
+                            ) : (
+                              <>
+                                <li>"อะไรที่รู้สึกง่ายต่อการใช้งาน?"</li>
+                                <li>"อะไรที่ใช้เวลามากกว่าที่คาดไว้?"</li>
+                                <li>"ถ้าคนอื่นใช้สิ่งนี้ อะไรอาจทำให้พวกเขาสับสน?"</li>
+                              </>
+                            )}
+                          </ul>
+                          <p className="text-muted-foreground leading-relaxed mt-3">
+                            {language === 'en'
+                              ? 'These questions invite feedback without forcing criticism.'
+                              : 'คำถามเหล่านี้เชิญข้อเสนอแนะโดยไม่บังคับการวิจารณ์'}
                           </p>
                         </div>
+                      ) : method.id === 'dot-voting' && index === 3 ? (
+                        <p className="text-muted-foreground leading-relaxed pt-1">
+                          {language === 'en' ? (
+                            <>Be sure to specify <em>what conditions</em> users are voting on. For example, "Place your dots on the 3 solutions you think will make the app easier to understand" or "Place your dots on the 3 pain points that are the most frustrating"</>
+                          ) : (
+                            <>อย่าลืมระบุ<em>เงื่อนไข</em>ที่ผู้ใช้กำลังลงคะแนน ตัวอย่างเช่น "วางจุดของคุณบน 3 โซลูชันที่คุณคิดว่าจะทำให้แอปเข้าใจง่ายขึ้น" หรือ "วางจุดของคุณบน 3 ปัญหาที่น่าหงุดหงิดที่สุด"</>
+                          )}
+                        </p>
                       ) : (
                         <p className="text-muted-foreground leading-relaxed pt-1">
                           {step}
@@ -512,6 +636,45 @@ const MethodDetail = () => {
                     </li>
                   ))}
                 </ol>
+                {method.id === 'choose-from-two' && (
+                  <p className="text-lg text-muted-foreground leading-relaxed mt-6">
+                    {language === 'en' ? (
+                      <>Don't just use Comparative Evaluation to choose one option and build it—this method becomes powerful when it's used to understand <em>why</em> users prefer one version over the other. Comparing two options simply gives users a way to critique without directly calling out what they dislike. Usually, the final design will include desirable aspects from each option, based on user feedback on each.</>
+                    ) : (
+                      <>อย่าใช้การประเมินเปรียบเทียบเพียงเพื่อเลือกตัวเลือกหนึ่งและสร้างมัน—วิธีนี้มีพลังเมื่อใช้เพื่อทำความเข้าใจ<em>ทำไม</em>ผู้ใช้ชอบเวอร์ชันหนึ่งมากกว่าอีกเวอร์ชัน การเปรียบเทียบสองตัวเลือกให้ผู้ใช้มีวิธีวิจารณ์โดยไม่ต้องชี้ให้เห็นโดยตรงว่าพวกเขาไม่ชอบอะไร โดยปกติการออกแบบสุดท้ายจะรวมแง่มุมที่พึงประสงค์จากแต่ละตัวเลือก ตามข้อเสนอแนะของผู้ใช้เกี่ยวกับแต่ละตัวเลือก</>
+                    )}
+                  </p>
+                )}
+                {method.id === 'dot-voting' && (
+                  <div className="mt-6 p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 flex items-center gap-3">
+                    <Lightbulb className="w-5 h-5 text-green-700 dark:text-green-400 flex-shrink-0" />
+                    <p className="text-green-900 dark:text-green-100 leading-relaxed">
+                      {language === 'en'
+                        ? 'Tip: To make voting anonymous, number all the concepts or groups of concepts. Give each person a piece of paper, and have them write the numbers corresponding to the three concepts they would vote for. Collect all the papers, and tally up the votes.'
+                        : 'เคล็ดลับ: เพื่อทำให้การลงคะแนนไม่ระบุตัวตน ให้หมายเลขแนวคิดหรือกลุ่มแนวคิดทั้งหมด ให้แต่ละคนมีกระดาษหนึ่งแผ่น และให้พวกเขาเขียนหมายเลขที่สอดคล้องกับสามแนวคิดที่พวกเขาจะลงคะแนน รวบรวมกระดาษทั้งหมด และนับคะแนน'}
+                    </p>
+                  </div>
+                )}
+                {method.id === 'diary-study' && (
+                  <div className="mt-6 p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 flex items-center gap-3">
+                    <Lightbulb className="w-5 h-5 text-green-700 dark:text-green-400 flex-shrink-0" />
+                    <p className="text-green-900 dark:text-green-100 leading-relaxed">
+                      {language === 'en'
+                        ? 'Tip: Pair diary studies with group activities where people can reflect on insights together. This turns private observations into shared understanding without direct confrontation.'
+                        : 'เคล็ดลับ: จับคู่การศึกษาไดอารี่กับกิจกรรมกลุ่มที่ผู้คนสามารถสะท้อนข้อมูลเชิงลึกร่วมกันได้ นี่เปลี่ยนการสังเกตส่วนตัวเป็นการทำความเข้าใจร่วมกันโดยไม่ต้องเผชิญหน้าโดยตรง'}
+                    </p>
+                  </div>
+                )}
+                {method.id === 'pilot-testing' && (
+                  <div className="mt-6 p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 flex items-center gap-3">
+                    <Lightbulb className="w-5 h-5 text-green-700 dark:text-green-400 flex-shrink-0" />
+                    <p className="text-green-900 dark:text-green-100 leading-relaxed">
+                      {language === 'en'
+                        ? 'Tip: Pilot testing can happen in one session, or over a period of several weeks, depending on what you\'re testing.'
+                        : 'เคล็ดลับ: การทดสอบนำร่องสามารถเกิดขึ้นในหนึ่งเซสชันหรือในช่วงเวลาหลายสัปดาห์ ขึ้นอยู่กับสิ่งที่คุณกำลังทดสอบ'}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Field Notes Sheets */}
@@ -654,7 +817,7 @@ const MethodDetail = () => {
                       </div>
                     </div>
                     <div className="lg:sticky lg:top-8">
-                      <img src="/smart-station-mapview.png" alt="BridgeBox" className="w-full h-auto object-cover rounded-lg" />
+                      <img src="/BBx_Songkhla1.png" alt="BridgeBox" className="w-full h-auto object-cover rounded-lg" />
                     </div>
                   </div>
                 </div>

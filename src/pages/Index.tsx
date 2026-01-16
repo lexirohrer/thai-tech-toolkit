@@ -412,14 +412,38 @@ const Index = () => {
                     {t('facilitation.tip7')}
                   </p>
                 </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip10')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip11')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip12')}
+                  </p>
+                </div>
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
+                  <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t('facilitation.tip13')}
+                  </p>
+                </div>
               </div>
             </div>
 
             <div>
               <h3 className="font-display text-xl font-semibold text-foreground mb-4">{t('facilitation.commonChallenges')}</h3>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
-                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0 self-center" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge1')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
@@ -427,8 +451,8 @@ const Index = () => {
                     </p>
                   </div>
                 </div>
-                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
-                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0 self-center" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge2')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
@@ -436,8 +460,8 @@ const Index = () => {
                     </p>
                   </div>
                 </div>
-                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
-                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0 self-center" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge3')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
@@ -445,8 +469,8 @@ const Index = () => {
                     </p>
                   </div>
                 </div>
-                <div className="p-6 rounded-2xl bg-card border border-border flex items-center gap-3">
-                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <div className="p-6 rounded-2xl bg-card border border-border flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0 self-center" />
                   <div>
                     <h4 className="font-semibold text-foreground mb-2">{t('facilitation.challenge4')}</h4>
                     <p className="text-muted-foreground leading-relaxed">
