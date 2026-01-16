@@ -78,9 +78,10 @@ const Index = () => {
   const goalOptions = [
     { value: 'understand', label: t('hero.understandUsers'), phase: 'discover' as Phase },
     { value: 'define', label: t('hero.defineProblem'), phase: 'define' as Phase },
-    { value: 'ideate', label: t('hero.generateSolutions'), phase: 'develop' as Phase },
-    { value: 'test', label: t('hero.testIdeas'), phase: 'deliver' as Phase },
-    { value: 'gather', label: t('hero.gatherFeedback'), phase: 'deliver' as Phase },
+    { value: 'ideate', label: t('hero.generateSolutions'), phase: 'ideate' as Phase },
+    { value: 'test', label: t('hero.testIdeas'), phase: 'evaluate' as Phase },
+    { value: 'gather', label: t('hero.gatherFeedback'), phase: null },
+    { value: 'evaluate', label: t('hero.evaluateEffectiveness'), phase: 'evaluate' as Phase },
   ];
 
   const handleFindMethods = () => {
@@ -90,6 +91,7 @@ const Index = () => {
       if (goalPhase) {
         setFilterPhases(prev => prev.includes(goalPhase) ? prev : [...prev, goalPhase]);
       }
+      // If phase is null (e.g., 'gather feedback'), don't apply any phase filter
     }
     if (selectedExperience) {
       setFilterDifficulties(prev => prev.includes(selectedExperience) ? prev : [...prev, selectedExperience]);
@@ -369,43 +371,24 @@ const Index = () => {
             </div>
 
             <div className="mb-8">
-              <DropdownMenu>
-                <div className="flex w-full rounded-lg border border-primary overflow-hidden">
-                  <button
-                    className="flex-1 px-6 py-3 bg-background text-primary font-semibold hover:bg-muted transition-colors text-left"
-                    onClick={() => {
-                      // Default action: open English script
-                      window.open('https://docs.google.com/document/d/1rd-poar_0WTbWDukw4ozPDZqlPtScmIuOH9R00XbZBc/edit?usp=sharing', '_blank');
-                    }}
-                  >
-                    See Example Scripts
-                  </button>
-                  <div className="w-px bg-primary self-stretch" />
-                  <DropdownMenuTrigger asChild>
-                    <button className="px-3 py-3 bg-background text-primary hover:bg-muted transition-colors flex items-center justify-center">
-                      <ChevronDown size={16} />
-                    </button>
-                  </DropdownMenuTrigger>
-                </div>
-                <DropdownMenuContent className="bg-card border border-border shadow-lg z-50 min-w-[180px]">
-                  <DropdownMenuItem
-                    onClick={() => {
-                      window.open('https://docs.google.com/document/d/1rd-poar_0WTbWDukw4ozPDZqlPtScmIuOH9R00XbZBc/edit?usp=sharing', '_blank');
-                    }}
-                    className="cursor-pointer hover:bg-muted"
-                  >
-                    English Script
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    onClick={() => {
-                      window.open('https://docs.google.com/document/d/1oPofaBjJJu7V9YKHrpoYUtQ9tS2eEoarLZeD3VLyY7Y/edit?usp=sharing', '_blank');
-                    }}
-                    className="cursor-pointer hover:bg-muted"
-                  >
-                    Thai Script
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="flex gap-4">
+                <button
+                  className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                  onClick={() => {
+                    window.open('https://docs.google.com/document/d/1rd-poar_0WTbWDukw4ozPDZqlPtScmIuOH9R00XbZBc/edit?usp=sharing', '_blank');
+                  }}
+                >
+                  See English Example Script
+                </button>
+                <button
+                  className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                  onClick={() => {
+                    window.open('https://docs.google.com/document/d/1oPofaBjJJu7V9YKHrpoYUtQ9tS2eEoarLZeD3VLyY7Y/edit?usp=sharing', '_blank');
+                  }}
+                >
+                  ดูสคริปต์ตัวอย่างภาษาไทย
+                </button>
+              </div>
             </div>
 
             <div className="mb-8">

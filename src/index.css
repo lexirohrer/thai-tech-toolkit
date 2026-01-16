@@ -135,12 +135,22 @@
     color: #29563C;
   }
 
+  .phase-ideate {
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
   .phase-develop {
     background-color: #CFE2D7;
     color: #29563C;
   }
 
   .phase-deliver {
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
+  .phase-evaluate {
     background-color: #CFE2D7;
     color: #29563C;
   }
@@ -351,12 +361,22 @@
     color: #29563C;
   }
 
+  .phase-ideate {
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
   .phase-develop {
     background-color: #CFE2D7;
     color: #29563C;
   }
 
   .phase-deliver {
+    background-color: #CFE2D7;
+    color: #29563C;
+  }
+
+  .phase-evaluate {
     background-color: #CFE2D7;
     color: #29563C;
   }

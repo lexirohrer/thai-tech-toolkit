@@ -31,6 +31,7 @@ const translations: Record<string, Record<Language, string>> = {
   'hero.generateSolutions': { en: 'generate solutions', th: 'สร้างแนวทางแก้ไข' },
   'hero.testIdeas': { en: 'test my ideas', th: 'ทดสอบความคิดของฉัน' },
   'hero.gatherFeedback': { en: 'gather feedback', th: 'รวบรวมความคิดเห็น' },
+  'hero.evaluateEffectiveness': { en: 'evaluate effectiveness', th: 'ประเมินประสิทธิภาพ' },
   'hero.projectInPhase': { en: 'my project is in phase', th: 'โครงการของฉันอยู่ในระยะ' },
   'hero.selectPhase': { en: 'select phase', th: 'เลือกระยะ' },
   'hero.findMethods': { en: 'Find Methods', th: 'ค้นหาวิธีการ' },
@@ -48,7 +49,7 @@ const translations: Record<string, Record<Language, string>> = {
 
   // Filter Bar
   'filter.byPhase': { en: 'Project Phase', th: 'ระยะของโครงการ' },
-  'filter.byDifficulty': { en: 'Facilitator Experience Needed', th: 'ประสบการณ์ผู้ดำเนินการที่ต้องการ' },
+  'filter.byDifficulty': { en: 'Facilitator Experience', th: 'ประสบการณ์ผู้ดำเนินการ' },
   'filter.byParticipants': { en: 'Number of Participants', th: 'จำนวนผู้เข้าร่วม' },
   'filter.byDigitalLiteracy': { en: 'User Digital Literacy', th: 'ทักษะดิจิทัลของผู้ใช้' },
   'filter.allPhases': { en: 'All Phases', th: 'ทุกระยะ' },
@@ -63,6 +64,8 @@ const translations: Record<string, Record<Language, string>> = {
   'methodDetail.backToMethods': { en: 'Back to Methods', th: 'กลับไปวิธีการ' },
   'methodDetail.level': { en: 'Level', th: 'ระดับ' },
   'methodDetail.overview': { en: 'Overview', th: 'ภาพรวม' },
+  'methodDetail.whenToUse': { en: 'When to use', th: 'เมื่อใดควรใช้' },
+  'methodDetail.materials': { en: 'Materials', th: 'วัสดุอุปกรณ์' },
   'methodDetail.culturalTip': { en: 'Cultural Adaptation Tip', th: 'เคล็ดลับการปรับให้เหมาะกับวัฒนธรรม' },
   'methodDetail.howToFacilitate': { en: 'How to Facilitate', th: 'วิธีดำเนินการ' },
   'methodDetail.facilitationDifficulty': { en: 'Facilitation Difficulty', th: 'ความยากในการดำเนินการ' },
@@ -158,7 +161,7 @@ const translations: Record<string, Record<Language, string>> = {
   'facilitation.challenge3': { en: 'People are too polite to critique the designs in front of authority', th: 'ผู้คนสุภาพเกินไปที่จะวิจารณ์การออกแบบต่อหน้าผู้มีอำนาจ' },
   'facilitation.challenge3Solution': { en: 'Remove observers; make any designers or builders of the system leave; ask people to write their thoughts on worksheets or sticky notes, and put people in pairs to discuss.', th: 'ลบผู้สังเกตการณ์ ให้ผู้ออกแบบหรือผู้สร้างระบบออก ขอให้ผู้คนเขียนความคิดของพวกเขาบนเวิร์กชีตหรือโน้ตติด และจับคู่ผู้คนเพื่ออภิปราย' },
   'facilitation.challenge4': { en: 'People are just echoing others\' thoughts', th: 'ผู้คนเพียงแค่ทำซ้ำความคิดของผู้อื่น' },
-  'facilitation.challenge4Solution': { en: 'Ask more specific follow-up questions. Instead of "What problems do you have with this system?", ask "What was the most frustrating moment in this process?", or "What did you hesitate about before pressing that button?"', th: 'ถามคำถามติดตามที่เฉพาะเจาะจงมากขึ้น แทนที่จะถามว่า "คุณมีปัญหาอะไรกับระบบนี้?" ถามว่า "ช่วงเวลาที่น่าหงุดหงิดที่สุดในกระบวนการนี้คืออะไร?" หรือ "คุณลังเลอะไรก่อนกดปุ่มนั้น?"' },
+  'facilitation.challenge4Solution': { en: 'Ask more specific follow-up questions. Instead of "What problems do you have with this system?", ask "What was the most frustrating moment in this process?", or "Why did you hesitate before pressing that button?"', th: 'ถามคำถามติดตามที่เฉพาะเจาะจงมากขึ้น แทนที่จะถามว่า "คุณมีปัญหาอะไรกับระบบนี้?" ถามว่า "ช่วงเวลาที่น่าหงุดหงิดที่สุดในกระบวนการนี้คืออะไร?" หรือ "ทำไมคุณถึงลังเลก่อนกดปุ่มนั้น?"' },
   'facilitation.understandingContext': { en: 'Understanding the facilitation context', th: 'ทำความเข้าใจบริบทการดำเนินการ' },
   'facilitation.seeTips': { en: 'See Facilitation Tips', th: 'ดูเคล็ดลับการดำเนินการ' },
 

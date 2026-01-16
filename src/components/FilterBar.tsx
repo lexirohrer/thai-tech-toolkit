@@ -26,7 +26,7 @@ export function FilterBar({
   onDigitalLiteracyChange,
 }: FilterBarProps) {
   const { language, t } = useLanguage();
-  const phases: Phase[] = ['discover', 'define', 'develop', 'deliver'];
+  const phases: Phase[] = ['discover', 'define', 'ideate', 'evaluate'];
   const difficulties: Difficulty[] = [1, 2, 3];
   const participantRanges: ParticipantRange[] = ['1-5', '6-10', '11-20', '21+'];
   const digitalLiteracies: DigitalLiteracy[] = ['low', 'medium', 'high'];

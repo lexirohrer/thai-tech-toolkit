@@ -14,8 +14,10 @@ export function MethodCard({ method }: MethodCardProps) {
   const phaseClasses = {
     discover: 'phase-discover',
     define: 'phase-define',
+    ideate: 'phase-ideate',
     develop: 'phase-develop',
     deliver: 'phase-deliver',
+    evaluate: 'phase-evaluate',
   };
 
   const difficultyClasses = {
