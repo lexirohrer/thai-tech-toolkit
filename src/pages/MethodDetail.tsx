@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Users, AlertCircle, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Clock, Users, AlertCircle, CheckCircle, Lightbulb } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { methods, phaseLabels, difficultyLabels, digitalLiteracyLabels } from '@/data/methods';
@@ -146,44 +146,42 @@ const MethodDetail = () => {
       },
       'write-then-speak': {
         en: [
-          'Worksheets or paper for writing',
           'Pens or pencils',
           'Timer or clock',
-          'Notebook for documenting discussions',
+          'Notebook for collecting and reviewing written materials',
+          'Worksheets',
         ],
         th: [
-          'เวิร์กชีตหรือกระดาษสำหรับเขียน',
           'ปากกาหรือดินสอ',
           'จับเวลาหรือนาฬิกา',
-          'สมุดบันทึกสำหรับบันทึกการอภิปราย',
+          'สมุดบันทึกสำหรับรวบรวมและทบทวนเอกสารที่เป็นลายลักษณ์อักษร',
+          'เวิร์กชีต',
         ],
       },
       'choose-from-two': {
         en: [
           'Two versions of the design (Option A and Option B)',
           'Display materials (printed or digital)',
-          'Notebook for documenting preferences and feedback',
           'Pens or pencils for participants to write notes',
         ],
         th: [
           'สองเวอร์ชันของการออกแบบ (ตัวเลือก A และตัวเลือก B)',
           'วัสดุแสดงผล (พิมพ์หรือดิจิทัล)',
-          'สมุดบันทึกสำหรับบันทึกความชอบและข้อเสนอแนะ',
           'ปากกาหรือดินสอสำหรับผู้เข้าร่วมเขียนบันทึก',
         ],
       },
       'worksheets': {
         en: [
-          'Worksheets with clear instructions (in all languages used)',
           'Pens or pencils',
           'Images or diagrams of the system (if gathering feedback)',
           'Notebook for collecting completed worksheets',
+          'Worksheets',
         ],
         th: [
-          'เวิร์กชีตพร้อมคำแนะนำที่ชัดเจน (ในทุกภาษาที่ใช้)',
           'ปากกาหรือดินสอ',
           'ภาพหรือแผนภาพของระบบ (หากรวบรวมข้อเสนอแนะ)',
           'สมุดบันทึกสำหรับรวบรวมเวิร์กชีตที่เสร็จสมบูรณ์',
+          'เวิร์กชีต',
         ],
       },
     };
@@ -250,9 +248,25 @@ const MethodDetail = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {language === 'en' ? method.description : (method.descriptionThai || method.description)}
                 </p>
+                {method.id === 'worksheets' && (
+                  <div className="mt-6 p-4 rounded-lg bg-muted border border-border flex items-center gap-3">
+                    <Lightbulb className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                    <p className="text-muted-foreground leading-relaxed">
+                      {language === 'en'
+                        ? 'If a user has never sketched before, which will be more intimidating: a blank sheet of paper, or a worksheet with guidance?'
+                        : 'ถ้าผู้ใช้ไม่เคยวาดภาพมาก่อน อะไรที่น่ากลัวกว่ากัน: กระดาษเปล่า หรือเวิร์กชีตที่มีคำแนะนำ?'}
+                    </p>
+                  </div>
+                )}
                 {method.id === 'paper-prototyping' && (
                   <div className="mt-6">
                     <img src="/paper-prototype.png" alt="Paper Prototyping" className="w-full h-auto rounded-lg" />
+                  </div>
+                )}
+                {method.id === 'worksheets' && (
+                  <div className="mt-6 flex gap-4">
+                    <img src="/Sketch-sheet.png" alt="Sketch Sheet" className="w-1/2 h-auto rounded-lg" />
+                    <img src="/Structured-Sketch-sheet.png" alt="Structured Sketch Sheet" className="w-1/2 h-auto rounded-lg" />
                   </div>
                 )}
               </div>
@@ -263,16 +277,25 @@ const MethodDetail = () => {
                   {t('methodDetail.whenToUse')}
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  {method.phase === 'discover' && (language === 'en' 
+                  {method.id === 'worksheets' && (language === 'en'
+                    ? 'Use this method when you want to give users silent time to think and ideate, rather than having them come up with ideas or sketch on the spot. It\'s especially good for people who have never participated in a design workshop, and for users with lower digital literacy or lower tech skills. Structured sketching eliminates uncertainty and increases confidence for first-time participants. It also allows users who may be participating in the workshop in a second language to read instructions as well as hear them verbally.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้ใช้คิดและสร้างไอเดียเงียบๆ แทนที่จะให้พวกเขาคิดไอเดียหรือวาดภาพทันที เหมาะอย่างยิ่งสำหรับผู้ที่ไม่เคยเข้าร่วมเวิร์กช็อปการออกแบบมาก่อน และสำหรับผู้ใช้ที่มีทักษะดิจิทัลต่ำหรือทักษะทางเทคนิคต่ำ การวาดภาพที่มีโครงสร้างช่วยขจัดความไม่แน่นอนและเพิ่มความมั่นใจสำหรับผู้เข้าร่วมครั้งแรก นอกจากนี้ยังช่วยให้ผู้ใช้ที่อาจเข้าร่วมเวิร์กช็อปในภาษาที่สองสามารถอ่านคำแนะนำได้เช่นเดียวกับการได้ยินด้วยวาจา')}
+                  {method.phase === 'discover' && method.id !== 'write-then-speak' && method.id !== 'worksheets' && (language === 'en' 
                     ? 'Use this method when you need to understand how people behave in their natural environment. It works well at the beginning of a project when you want to observe real behaviors without influencing them. It can also be used to uncover problems with existing products or services that don\'t emerge in controlled research contexts like interviews.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการเข้าใจว่าผู้คนมีพฤติกรรมอย่างไรในสภาพแวดล้อมตามธรรมชาติ วิธีนี้ใช้ได้ดีในช่วงเริ่มต้นของโครงการเมื่อคุณต้องการสังเกตพฤติกรรมจริงโดยไม่กระทบต่อพวกเขา นอกจากนี้ยังสามารถใช้เพื่อเปิดเผยปัญหากับผลิตภัณฑ์หรือบริการที่มีอยู่ซึ่งไม่ปรากฏในบริบทการวิจัยที่ควบคุมเช่นการสัมภาษณ์')}
+                  {method.id === 'write-then-speak' && (language === 'en'
+                    ? 'Use this method when you want to give quieter participants time to think and participate more meaningfully. It\'s especially valuable when working in contexts with hierarchy or social harmony constraints, as it creates written artifacts that capture ideas people might not feel comfortable voicing aloud. The written responses allow you to review what people really think, beyond what they\'re willing to say in group discussions.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้เข้าร่วมที่เงียบกว่าคิดและมีส่วนร่วมอย่างมีความหมายมากขึ้น มีคุณค่าอย่างยิ่งเมื่อทำงานในบริบทที่มีข้อจำกัดของลำดับชั้นหรือความสามัคคีทางสังคม เนื่องจากสร้างสิ่งประดิษฐ์ที่เป็นลายลักษณ์อักษรที่จับไอเดียที่ผู้คนอาจไม่รู้สึกสะดวกใจที่จะพูดออกมาดังๆ คำตอบที่เป็นลายลักษณ์อักษรช่วยให้คุณทบทวนสิ่งที่ผู้คนคิดจริงๆ เกินกว่าสิ่งที่พวกเขายินดีพูดในการอภิปรายกลุ่ม')}
                   {method.phase === 'define' && (language === 'en'
                     ? 'Use this method when you need to organize information or understand how people think about concepts. It helps clarify problems and structure your understanding.'
                     : 'ใช้วิธีนี้เมื่อคุณต้องการจัดระเบียบข้อมูลหรือเข้าใจว่าผู้คนคิดเกี่ยวกับแนวคิดอย่างไร ช่วยให้ชัดเจนเกี่ยวกับปัญหาและโครงสร้างความเข้าใจของคุณ')}
                   {method.phase === 'ideate' && method.id === 'paper-prototyping' && (language === 'en'
                     ? 'Use Paper Prototyping when you want to quickly test design concepts before investing in digital development. It\'s ideal for exploring multiple ideas, getting early user feedback, and making changes easily. The rough, low-fidelity nature signals to participants that everything is open to change, which encourages honest feedback. This method works especially well when working with users who may be hesitant to critique polished designs, as the paper format makes it clear that feedback is welcome. Note that this activity requires prep time to create a paper mockup kit beforehand—you will spend time prepping so that the sessions themselves run smoothly and are easy and fun for users.'
                     : 'ใช้การสร้างต้นแบบกระดาษเมื่อคุณต้องการทดสอบแนวคิดการออกแบบอย่างรวดเร็วก่อนลงทุนในการพัฒนาดิจิทัล เหมาะสำหรับการสำรวจความคิดหลายๆ แบบ รับข้อเสนอแนะจากผู้ใช้ตั้งแต่เนิ่นๆ และทำการเปลี่ยนแปลงได้ง่าย ลักษณะที่หยาบและมีความเที่ยงตรงต่ำส่งสัญญาณให้ผู้เข้าร่วมว่าทุกอย่างเปิดให้เปลี่ยนแปลง ซึ่งส่งเสริมข้อเสนอแนะที่ซื่อสัตย์ วิธีนี้ใช้ได้ดีเป็นพิเศษเมื่อทำงานกับผู้ใช้ที่อาจลังเลในการวิจารณ์การออกแบบที่เรียบร้อย เนื่องจากรูปแบบกระดาษทำให้ชัดเจนว่าข้อเสนอแนะเป็นที่ยินดี โปรดทราบว่ากิจกรรมนี้ต้องการเวลาเตรียมการเพื่อสร้างชุดต้นแบบกระดาษล่วงหน้า—คุณจะใช้เวลาเตรียมการเพื่อให้เซสชันเองดำเนินไปอย่างราบรื่นและง่ายและสนุกสำหรับผู้ใช้')}
-                  {method.phase === 'ideate' && method.id !== 'paper-prototyping' && (language === 'en'
+                  {method.id === 'worksheets' && (language === 'en'
+                    ? 'Use this method when you want to give users silent time to think and ideate, rather than having them come up with ideas or sketch on the spot. It\'s especially good for people who have never participated in a design workshop, and for users with lower digital literacy or lower tech skills. Structured sketching eliminates uncertainty and increases confidence for first-time participants. It also allows users who may be participating in the workshop in a second language to read instructions as well as hear them verbally.'
+                    : 'ใช้วิธีนี้เมื่อคุณต้องการให้เวลาผู้ใช้คิดและสร้างไอเดียเงียบๆ แทนที่จะให้พวกเขาคิดไอเดียหรือวาดภาพทันที เหมาะอย่างยิ่งสำหรับผู้ที่ไม่เคยเข้าร่วมเวิร์กช็อปการออกแบบมาก่อน และสำหรับผู้ใช้ที่มีทักษะดิจิทัลต่ำหรือทักษะทางเทคนิคต่ำ การวาดภาพที่มีโครงสร้างช่วยขจัดความไม่แน่นอนและเพิ่มความมั่นใจสำหรับผู้เข้าร่วมครั้งแรก นอกจากนี้ยังช่วยให้ผู้ใช้ที่อาจเข้าร่วมเวิร์กช็อปในภาษาที่สองสามารถอ่านคำแนะนำได้เช่นเดียวกับการได้ยินด้วยวาจา')}
+                  {method.phase === 'ideate' && method.id !== 'paper-prototyping' && method.id !== 'worksheets' && (language === 'en'
                     ? 'Use this method when you are generating ideas and exploring different possibilities. It helps you brainstorm solutions and test concepts before committing to a specific direction.'
                     : 'ใช้วิธีนี้เมื่อคุณกำลังสร้างไอเดียและสำรวจความเป็นไปได้ที่แตกต่างกัน ช่วยให้คุณระดมสมองหาโซลูชันและทดสอบแนวคิดก่อนที่จะมุ่งมั่นกับทิศทางเฉพาะ')}
                   {method.phase === 'develop' && (language === 'en'
@@ -298,6 +321,107 @@ const MethodDetail = () => {
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
+                  {method.id === 'write-then-speak' && (
+                    <>
+                      <div className="mt-6 space-y-4">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {language === 'en'
+                            ? 'Worksheets are important to provide structure and allow people to reread the question, especially if the workshop is being facilitated in multiple languages. To make worksheets, you can use software like Google Docs or Canva. Write-then-Speak worksheets should have:'
+                            : 'เวิร์กชีตมีความสำคัญในการให้โครงสร้างและช่วยให้ผู้คนอ่านคำถามซ้ำได้ โดยเฉพาะอย่างยิ่งหากเวิร์กช็อปถูกดำเนินการในหลายภาษา ในการสร้างเวิร์กชีต คุณสามารถใช้ซอฟต์แวร์เช่น Google Docs หรือ Canva เวิร์กชีต Write-then-Speak ควรมี:'}
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-lg text-muted-foreground leading-relaxed ml-4">
+                          {language === 'en' ? (
+                            <>
+                              <li>The question being asked, in all relevant languages</li>
+                              <li>Space for the name of the person</li>
+                              <li>Plenty of space to write or draw thoughts</li>
+                            </>
+                          ) : (
+                            <>
+                              <li>คำถามที่ถาม ในทุกภาษาที่เกี่ยวข้อง</li>
+                              <li>พื้นที่สำหรับชื่อของบุคคล</li>
+                              <li>พื้นที่มากมายสำหรับเขียนหรือวาดความคิด</li>
+                            </>
+                          )}
+                        </ul>
+                      </div>
+                      <div className="mt-6">
+                        <img src="/Write-then-speak.png" alt="Write Then Speak Example" className="w-full h-auto rounded-lg" />
+                      </div>
+                    </>
+                  )}
+                  {method.id === 'worksheets' && (
+                    <>
+                      <div className="mt-6 space-y-4">
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                          {language === 'en'
+                            ? 'Worksheets are important to provide structure and allow people to reread the question, especially if the workshop is being facilitated in multiple languages. To make worksheets, you can use software like Google Docs or Canva. Structured Sketching worksheets should have:'
+                            : 'เวิร์กชีตมีความสำคัญในการให้โครงสร้างและช่วยให้ผู้คนอ่านคำถามซ้ำได้ โดยเฉพาะอย่างยิ่งหากเวิร์กช็อปถูกดำเนินการในหลายภาษา ในการสร้างเวิร์กชีต คุณสามารถใช้ซอฟต์แวร์เช่น Google Docs หรือ Canva เวิร์กชีตการวาดภาพที่มีโครงสร้างควรมี:'}
+                        </p>
+                        <ul className="list-disc list-inside space-y-2 text-lg text-muted-foreground leading-relaxed ml-4">
+                          {language === 'en' ? (
+                            <>
+                              <li>The question being asked, in all relevant languages</li>
+                              <li>Space for the name of the person</li>
+                              <li>Plenty of space to write or draw thoughts</li>
+                              <li>If applicable, a scenario you'd like the user to imagine themselves in</li>
+                              <li>Pictures or diagrams of any systems or tech being critiqued, so that users can circle, cross out, and resketch how they would change the system</li>
+                            </>
+                          ) : (
+                            <>
+                              <li>คำถามที่ถาม ในทุกภาษาที่เกี่ยวข้อง</li>
+                              <li>พื้นที่สำหรับชื่อของบุคคล</li>
+                              <li>พื้นที่มากมายสำหรับเขียนหรือวาดความคิด</li>
+                              <li>หากเหมาะสม สถานการณ์ที่คุณต้องการให้ผู้ใช้จินตนาการตัวเอง</li>
+                              <li>ภาพหรือแผนภาพของระบบหรือเทคโนโลยีใดๆ ที่กำลังถูกวิจารณ์ เพื่อให้ผู้ใช้สามารถวงกลม ขีดฆ่า และวาดใหม่ว่าพวกเขาจะเปลี่ยนระบบอย่างไร</li>
+                            </>
+                          )}
+                        </ul>
+                        <div className="mt-6">
+                          <img src="/sketch-worksheet.jpeg" alt="Sketch Worksheet Example" className="w-full h-auto rounded-lg" />
+                        </div>
+                        <div className="mt-6 pt-6 p-4 rounded-lg bg-[#CFE2D7] border border-[#29563C]/30 flex items-center gap-3">
+                          <Lightbulb className="w-5 h-5 text-[#29563C] flex-shrink-0" />
+                          <div>
+                            <p className="font-semibold text-[#29563C] mb-2">
+                              {language === 'en' ? 'Tip:' : 'เคล็ดลับ:'}
+                            </p>
+                            <p className="text-[#29563C] leading-relaxed">
+                              {language === 'en'
+                                ? 'Users will often draw in spaces you leave blank, and write when you give them lines. Leave out the lines if you want users to draw!'
+                                : 'ผู้ใช้มักจะวาดในพื้นที่ที่คุณเว้นว่างไว้ และเขียนเมื่อคุณให้เส้นแก่พวกเขา อย่าใส่เส้นถ้าคุณต้องการให้ผู้ใช้วาด!'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {/* Worksheet Starter Templates */}
+              {method.id === 'write-then-speak' && (
+                <div className="mb-12">
+                  <div className="flex gap-4">
+                    <button
+                      className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                      onClick={() => {
+                        // TODO: Add English worksheet template URL
+                        window.open('#', '_blank');
+                      }}
+                    >
+                      Worksheet starter templates
+                    </button>
+                    <button
+                      className="flex-1 px-6 py-3 rounded-lg border border-primary bg-background text-primary font-semibold hover:bg-muted transition-colors"
+                      onClick={() => {
+                        // TODO: Add Thai worksheet template URL
+                        window.open('#', '_blank');
+                      }}
+                    >
+                      เทมเพลตเวิร์กชีตเริ่มต้น
+                    </button>
+                  </div>
                 </div>
               )}
 
@@ -312,9 +436,79 @@ const MethodDetail = () => {
                       <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
                         {index + 1}
                       </span>
-                      <p className="text-muted-foreground leading-relaxed pt-1">
-                        {step}
-                      </p>
+                      {(method.id === 'write-then-speak' && index === 3) || (method.id === 'worksheets' && index === 3) ? (
+                        <div className="flex-1">
+                          <p className="text-muted-foreground leading-relaxed pt-1 mb-3">
+                            {language === 'en'
+                              ? method.id === 'worksheets'
+                                ? 'Facilitate the discussion. You can format it as a round table, where everyone goes around and simply shares what they sketched - this format is easy to facilitate, but can be time consuming and repetitive in larger groups. Instead, try asking one or two people to share, then bring others into the discussion with questions like:'
+                                : 'Facilitate the discussion. You can format it as a round table, where everyone goes around and simply shares what they wrote - this format is easy to facilitate, but can be time consuming and repetitive in larger groups. Instead, try asking one or two people to share, then bring others into the discussion with questions like:'
+                              : method.id === 'worksheets'
+                                ? 'ดำเนินการอภิปราย คุณสามารถจัดรูปแบบเป็นโต๊ะกลม โดยให้ทุกคนวนรอบและแบ่งปันสิ่งที่พวกเขาวาด - รูปแบบนี้ง่ายต่อการดำเนินการ แต่อาจใช้เวลานานและซ้ำซ้อนในกลุ่มใหญ่ แทนที่จะทำเช่นนั้น ลองถามคนหนึ่งหรือสองคนให้แบ่งปัน จากนั้นนำผู้อื่นเข้าสู่การอภิปรายด้วยคำถามเช่น:'
+                                : 'ดำเนินการอภิปราย คุณสามารถจัดรูปแบบเป็นโต๊ะกลม โดยให้ทุกคนวนรอบและแบ่งปันสิ่งที่พวกเขาเขียน - รูปแบบนี้ง่ายต่อการดำเนินการ แต่อาจใช้เวลานานและซ้ำซ้อนในกลุ่มใหญ่ แทนที่จะทำเช่นนั้น ลองถามคนหนึ่งหรือสองคนให้แบ่งปัน จากนั้นนำผู้อื่นเข้าสู่การอภิปรายด้วยคำถามเช่น:'}
+                          </p>
+                          <ul className="list-disc list-inside space-y-2 text-muted-foreground leading-relaxed ml-4">
+                            {language === 'en' ? (
+                              <>
+                                <li>"Did anyone have something similar?"</li>
+                                <li>{method.id === 'worksheets' ? '"Did anyone sketch something completely different?"' : '"Did anyone write something completely different?"'}</li>
+                                <li>"Has anyone had a similar experience?"</li>
+                              </>
+                            ) : (
+                              <>
+                                <li>"มีใครมีสิ่งที่คล้ายกันหรือไม่?"</li>
+                                <li>{method.id === 'worksheets' ? '"มีใครวาดสิ่งที่แตกต่างอย่างสิ้นเชิงหรือไม่?"' : '"มีใครเขียนสิ่งที่แตกต่างอย่างสิ้นเชิงหรือไม่?"'}</li>
+                                <li>"มีใครเคยมีประสบการณ์คล้ายกันหรือไม่?"</li>
+                              </>
+                            )}
+                          </ul>
+                        </div>
+                      ) : method.id === 'choose-from-two' && index === 4 ? (
+                        <div className="flex-1">
+                          <p className="text-muted-foreground leading-relaxed pt-1 mb-3">
+                            {language === 'en'
+                              ? 'Continue asking "Why" until you understand the root cause. For example:'
+                              : 'ถาม "ทำไม" ต่อไปจนกว่าคุณจะเข้าใจสาเหตุหลัก ตัวอย่างเช่น:'}
+                          </p>
+                          <div className="space-y-3 text-muted-foreground leading-relaxed mb-3">
+                            {language === 'en' ? (
+                              <>
+                                <p><strong>User:</strong> "I like option A because it's cleaner"</p>
+                                <p><strong>Facilitator:</strong> "What do you mean by 'cleaner'?"</p>
+                                <p><strong>User:</strong> It's easier to understand</p>
+                                <p><strong>Facilitator:</strong> "What makes it easier to understand?"</p>
+                                <p><strong>User:</strong> "<strong>There's less text to read</strong>, so it doesn't feel as overwhelming I guess"</p>
+                              </>
+                            ) : (
+                              <>
+                                <p><strong>ผู้ใช้:</strong> "ฉันชอบตัวเลือก A เพราะมันสะอาดกว่า"</p>
+                                <p><strong>ผู้ดำเนินการ:</strong> "คุณหมายถึงอะไรเมื่อพูดว่า 'สะอาดกว่า'?"</p>
+                                <p><strong>ผู้ใช้:</strong> มันเข้าใจง่ายกว่า</p>
+                                <p><strong>ผู้ดำเนินการ:</strong> "อะไรที่ทำให้มันเข้าใจง่ายกว่า?"</p>
+                                <p><strong>ผู้ใช้:</strong> "<strong>มีข้อความให้น้อยลง</strong> ดังนั้นมันจึงไม่รู้สึกท่วมท้นเท่าไหร่"</p>
+                              </>
+                            )}
+                          </div>
+                          <p className="text-muted-foreground leading-relaxed mb-3">
+                            {language === 'en' ? (
+                              <> <strong>Root Issue:</strong> Too much text on version B. Notice that the facilitator had to ask multiple times to understand the root cause.</>
+                            ) : (
+                              <> <strong>ปัญหาหลัก:</strong> มีข้อความมากเกินไปในเวอร์ชัน B สังเกตว่าผู้ดำเนินการต้องถามหลายครั้งเพื่อเข้าใจสาเหตุหลัก</>
+                            )}
+                          </p>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {language === 'en' ? (
+                              <>Don't just use Comparative Evaluation to choose one option and build it - this method becomes powerful when it's used to understand <em>why</em> users prefer one version over the other. Usually, the final design will include desirable aspects from each option, based on user feedback on each.</>
+                            ) : (
+                              <>อย่าใช้การประเมินเปรียบเทียบเพียงเพื่อเลือกตัวเลือกหนึ่งและสร้างมัน - วิธีนี้มีพลังเมื่อใช้เพื่อทำความเข้าใจ<em>ทำไม</em>ผู้ใช้ชอบเวอร์ชันหนึ่งมากกว่าอีกเวอร์ชัน โดยปกติการออกแบบสุดท้ายจะรวมแง่มุมที่พึงประสงค์จากแต่ละตัวเลือก ตามข้อเสนอแนะของผู้ใช้เกี่ยวกับแต่ละตัวเลือก</>
+                            )}
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground leading-relaxed pt-1">
+                          {step}
+                        </p>
+                      )}
                     </li>
                   ))}
                 </ol>
@@ -387,8 +581,80 @@ const MethodDetail = () => {
                       </div>
                     </div>
                     <div className="lg:sticky lg:top-8 flex flex-row gap-4">
-                      <img src="/Ethno-obs-pic.jpeg" alt="Ethnographic Observation" className="w-1/2 h-full object-cover rounded-lg" />
+                      <img src="/Ethno-phone.jpeg" alt="Paper Prototyping" className="w-1/2 h-full object-cover rounded-lg" />
                       <img src="/ethno-map.jpeg" alt="Ethnographic Observation Map" className="w-1/2 h-full object-cover rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Case Study */}
+              {method.id === 'write-then-speak' && (
+                <div className="mt-12">
+                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
+                    Case study using this method:
+                  </h2>
+                  <div className="grid lg:grid-cols-2 gap-8 lg:items-stretch">
+                    <div>
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                        {language === 'en' 
+                          ? 'Bangkok City Lab used Write Then Speak in their Smart Pole Motorbike Taxi System project. They conducted a usability and co-design workshop with six university students at the planned pilot site. Participants first shared personal experiences with motorbike taxis, then explored the Smart Pole prototype independently. Structured worksheets and routines of writing thoughts before speaking guided users to share divergent experiences without simply agreeing with each other. This approach helped identify critical usability issues and revealed that users\' mental models shifted from "taxi" to "ride-sharing service" when technology was introduced.'
+                          : 'Bangkok City Lab ใช้ Write Then Speak ในโครงการ Smart Pole Motorbike Taxi System ของพวกเขา พวกเขาจัดเวิร์กช็อปการใช้งานและการออกแบบร่วมกันกับนักศึกษามหาวิทยาลัยหกคนที่ไซต์นำร่องที่วางแผนไว้ ผู้เข้าร่วมแบ่งปันประสบการณ์ส่วนตัวกับมอเตอร์ไซค์รับจ้างก่อน จากนั้นสำรวจโปรโตไทป์ Smart Pole อย่างอิสระ เวิร์กชีตที่มีโครงสร้างและกิจวัตรของการเขียนความคิดก่อนพูดแนะนำผู้ใช้ให้แบ่งปันประสบการณ์ที่แตกต่างกันโดยไม่เพียงแค่เห็นด้วยกับกันและกัน แนวทางนี้ช่วยระบุปัญหาการใช้งานที่สำคัญและเปิดเผยว่าแบบจำลองทางจิตใจของผู้ใช้เปลี่ยนจาก "แท็กซี่" เป็น "บริการแชร์รถ" เมื่อมีการแนะนำเทคโนโลยี'}
+                      </p>
+                      <div className="max-w-2xl">
+                        <CaseStudyCard study={caseStudies.find(s => s.id === 'smart-pole-motorbike-taxi')!} />
+                      </div>
+                    </div>
+                    <div className="lg:sticky lg:top-8">
+                      <img src="/Writing-ex.jpeg" alt="Write Then Speak Example" className="w-full h-auto object-cover rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Case Study */}
+              {method.id === 'worksheets' && (
+                <div className="mt-12">
+                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
+                    Case study using this method:
+                  </h2>
+                  <div className="grid lg:grid-cols-2 gap-8 lg:items-stretch">
+                    <div>
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                        {language === 'en' 
+                          ? 'Bangkok City Lab used Structured Sketching in their Smart Pole Motorbike Taxi System project. They conducted a usability and co-design workshop with six university students at the planned pilot site. Participants first shared personal experiences with motorbike taxis, then explored the Smart Pole prototype independently. Structured worksheets helped users articulate thoughts clearly and converge toward solutions without circular discussion. The worksheets gave users silent time to think and sketch, rather than having to come up with ideas on the spot, which was especially valuable for first-time workshop participants.'
+                          : 'Bangkok City Lab ใช้การวาดภาพที่มีโครงสร้างในโครงการ Smart Pole Motorbike Taxi System ของพวกเขา พวกเขาจัดเวิร์กช็อปการใช้งานและการออกแบบร่วมกันกับนักศึกษามหาวิทยาลัยหกคนที่ไซต์นำร่องที่วางแผนไว้ ผู้เข้าร่วมแบ่งปันประสบการณ์ส่วนตัวกับมอเตอร์ไซค์รับจ้างก่อน จากนั้นสำรวจโปรโตไทป์ Smart Pole อย่างอิสระ เวิร์กชีตที่มีโครงสร้างช่วยให้ผู้ใช้แสดงความคิดเห็นอย่างชัดเจนและบรรจบกันไปสู่โซลูชันโดยไม่ต้องอภิปรายแบบวงกลม เวิร์กชีตให้เวลาผู้ใช้คิดและวาดเงียบๆ แทนที่จะต้องคิดไอเดียทันที ซึ่งมีคุณค่าอย่างยิ่งสำหรับผู้เข้าร่วมเวิร์กช็อปครั้งแรก'}
+                      </p>
+                      <div className="max-w-2xl">
+                        <CaseStudyCard study={caseStudies.find(s => s.id === 'smart-pole-motorbike-taxi')!} />
+                      </div>
+                    </div>
+                    <div className="lg:sticky lg:top-8">
+                      <img src="/citylab-sketchSheet.jpeg" alt="City Lab Sketch Sheet" className="w-full h-auto object-cover rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Case Study */}
+              {method.id === 'choose-from-two' && (
+                <div className="mt-12">
+                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
+                    Case study using this method:
+                  </h2>
+                  <div className="grid lg:grid-cols-2 gap-8 lg:items-stretch">
+                    <div>
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                        {language === 'en' 
+                          ? 'BridgeBox used Comparative Evaluation in their disaster response platform project. They needed to make their platform accessible to rural users in Songkhla Province who had lower technical literacy than urban participants. By presenting two design options and asking users to choose, then asking why they preferred one over the other, BridgeBox was able to gather honest feedback without requiring direct critique. This approach helped identify that users wanted integrated access to calculators, regulatory knowledge, and technician credentials in one place, leading to a co-designed solution that combined the best aspects of both options.'
+                          : 'BridgeBox ใช้การประเมินเปรียบเทียบในโครงการแพลตฟอร์มการตอบสนองภัยพิบัติของพวกเขา พวกเขาต้องการทำให้แพลตฟอร์มของพวกเขาสามารถเข้าถึงได้สำหรับผู้ใช้ชนบทในจังหวัดสงขลาที่มีความสามารถทางเทคนิคต่ำกว่าผู้เข้าร่วมในเมือง โดยการนำเสนอสองตัวเลือกการออกแบบและขอให้ผู้ใช้เลือก จากนั้นถามว่าทำไมพวกเขาถึงชอบตัวเลือกหนึ่งมากกว่าอีกตัวเลือกหนึ่ง BridgeBox สามารถรวบรวมข้อเสนอแนะที่ซื่อสัตย์โดยไม่ต้องใช้การวิจารณ์โดยตรง แนวทางนี้ช่วยระบุว่าผู้ใช้ต้องการการเข้าถึงแบบบูรณาการไปยังเครื่องคำนวณ ความรู้ด้านกฎระเบียบ และข้อมูลประจำตัวของช่างเทคนิคในที่เดียว นำไปสู่โซลูชันที่ร่วมออกแบบซึ่งรวมแง่มุมที่ดีที่สุดจากทั้งสองตัวเลือก'}
+                      </p>
+                      <div className="max-w-2xl">
+                        <CaseStudyCard study={caseStudies.find(s => s.id === 'bridgebox-disaster-response')!} />
+                      </div>
+                    </div>
+                    <div className="lg:sticky lg:top-8">
+                      <img src="/smart-station-mapview.png" alt="BridgeBox" className="w-full h-auto object-cover rounded-lg" />
                     </div>
                   </div>
                 </div>
