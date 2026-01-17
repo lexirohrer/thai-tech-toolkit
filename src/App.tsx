@@ -17,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/thai-tech-toolkit">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/methods/:id" element={<MethodDetail />} />

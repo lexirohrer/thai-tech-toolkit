@@ -94,7 +94,19 @@ const Index = () => {
       // If phase is null (e.g., 'gather feedback'), don't apply any phase filter
     }
     if (selectedExperience) {
-      setFilterDifficulties(prev => prev.includes(selectedExperience) ? prev : [...prev, selectedExperience]);
+      // When intermediate (2) is selected, show both beginner (1) and intermediate (2)
+      // When advanced (3) is selected, show all three (1, 2, 3)
+      // When beginner (1) is selected, show only beginner (1)
+      const difficultiesToAdd: Difficulty[] = selectedExperience === 2 ? [1, 2] : selectedExperience === 3 ? [1, 2, 3] : [1];
+      setFilterDifficulties(prev => {
+        const newDifficulties = [...prev];
+        difficultiesToAdd.forEach(diff => {
+          if (!newDifficulties.includes(diff as Difficulty)) {
+            newDifficulties.push(diff as Difficulty);
+          }
+        });
+        return newDifficulties;
+      });
     }
     // Scroll to methods section
     methodsRef.current?.scrollIntoView({ behavior: 'smooth' });

@@ -1,13 +1,32 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { BookOpen, Users, Heart, Lightbulb, ArrowRight } from 'lucide-react';
+import { BookOpen, Users, Heart, Lightbulb, ArrowRight, Globe, Clock } from 'lucide-react';
 import { caseStudies } from '@/data/caseStudies';
-import { CulturalContext } from '@/components/CulturalContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const About = () => {
   const { t } = useLanguage();
+  const [carouselApi, setCarouselApi] = useState<any>(null);
+
+  // Auto-scroll carousel
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const interval = setInterval(() => {
+      carouselApi.scrollNext();
+    }, 8000); // Scroll every 8 seconds
+
+    return () => clearInterval(interval);
+  }, [carouselApi]);
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -38,44 +57,6 @@ const About = () => {
               {t('about.whyDescription')}
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center p-8">
-              <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-8 h-8 text-sage-dark" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                {t('about.socialHarmony')}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {t('about.socialHarmonyDesc')}
-              </p>
-            </div>
-
-            <div className="text-center p-8">
-              <div className="w-16 h-16 rounded-2xl bg-gold-light flex items-center justify-center mx-auto mb-6">
-                <Lightbulb className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                {t('about.indirectFeedback')}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {t('about.indirectFeedbackDesc')}
-              </p>
-            </div>
-
-            <div className="text-center p-8">
-              <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mx-auto mb-6">
-                <Users className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                {t('about.hierarchySensitivity')}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {t('about.hierarchySensitivityDesc')}
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -92,11 +73,8 @@ const About = () => {
                 <p className="leading-relaxed mb-4">
                   {t('about.originP1')}
                 </p>
-                <p className="leading-relaxed mb-4">
-                  {t('about.originP2')}
-                </p>
                 <p className="leading-relaxed">
-                  {t('about.originP3')}
+                  {t('about.originP2')}
                 </p>
               </div>
             </div>
@@ -106,7 +84,77 @@ const About = () => {
               <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
                 {t('about.culturalContext')}
               </h2>
-              <CulturalContext />
+              <Carousel className="w-full max-w-5xl mx-auto" setApi={setCarouselApi} opts={{ loop: true }}>
+                <CarouselContent>
+                  <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                      <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
+                        <Heart className="w-6 h-6 text-sage-dark" />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                        {t('cultural.krengJai')}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t('cultural.krengJaiDesc')}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                      <div className="w-12 h-12 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                        <Users className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                        {t('cultural.face')}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t('cultural.faceDesc')}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                      <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
+                        <Globe className="w-6 h-6 text-accent" />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                        {t('cultural.hierarchy')}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t('cultural.hierarchyDesc')}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                      <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-4">
+                        <BookOpen className="w-6 h-6 text-sage-dark" />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                        {t('cultural.indirectCommunication')}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t('cultural.indirectCommunicationDesc')}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                      <div className="w-12 h-12 rounded-xl bg-gold-light flex items-center justify-center mb-4">
+                        <Clock className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                        {t('cultural.polychronicTime')}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {t('cultural.polychronicTimeDesc')}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
             </div>
 
             {/* How to Use */}
