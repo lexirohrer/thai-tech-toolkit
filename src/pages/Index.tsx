@@ -4,6 +4,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { MethodCard } from '@/components/MethodCard';
 import { FilterBar } from '@/components/FilterBar';
+import { GradientBackground } from '@/components/GradientBackground';
 import { methods, phaseLabels, Phase, Difficulty, DigitalLiteracy } from '@/data/methods';
 import { ParticipantRange } from '@/components/FilterBar';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -129,9 +130,10 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="grainy-gradient min-h-[85vh] flex flex-col">
-        <div className="flex-1 flex items-center justify-center">
-          <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+      <section className="relative min-h-[85vh] flex flex-col overflow-hidden">
+        <GradientBackground />
+        <div className="flex-1 flex items-center justify-center relative z-10">
+          <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
             <div className="w-full text-center">
               <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-12 animate-fade-up tracking-tight">
                 {t('hero.title')}

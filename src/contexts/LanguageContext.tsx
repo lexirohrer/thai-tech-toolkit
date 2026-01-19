@@ -14,7 +14,7 @@ const translations: Record<string, Record<Language, string>> = {
   'nav.methods': { en: 'Methods', th: 'วิธีการ' },
   'nav.caseStudies': { en: 'Case Studies', th: 'กรณีศึกษา' },
   'nav.about': { en: 'About', th: 'เกี่ยวกับ' },
-  'nav.designToolkit': { en: 'Design Toolkit', th: 'ชุดเครื่องมือการออกแบบ' },
+  'nav.designToolkit': { en: 'Co-Design Toolkit', th: 'ชุดเครื่องมือการออกแบบร่วม' },
 
   // Hero Section
   'hero.title': { en: 'A toolkit for doing co-design research in Thailand', th: 'ชุดเครื่องมือสำหรับการวิจัยการออกแบบร่วมกันในประเทศไทย' },

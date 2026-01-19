@@ -23,7 +23,7 @@ export function Navigation() {
           <Link to="/" className="flex items-center gap-3">
             <img src="/favicon.svg" alt="Logo" className="w-10 h-10" />
             <span className="font-display font-semibold text-xl text-foreground">
-              uxlex designs
+              Co-Design Toolkit
             </span>
           </Link>
 
