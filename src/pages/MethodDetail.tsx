@@ -719,8 +719,8 @@ const MethodDetail = () => {
                       </div>
                     </div>
                     <div className="lg:sticky lg:top-8 flex flex-row gap-4">
-                      <img src="/Ethno-obs-pic.jpeg" alt="Ethnographic Observation" className="w-1/2 h-full object-cover rounded-lg" />
-                      <img src="/ethno-map.jpeg" alt="Ethnographic Observation Map" className="w-1/2 h-full object-cover rounded-lg" />
+                      <img src="/Ethno-phone.jpeg" alt="Contextual Observation" className="w-1/2 h-full object-cover rounded-lg" />
+                      <img src="/ethno-map.jpeg" alt="Contextual Observation Map" className="w-1/2 h-full object-cover rounded-lg" />
                     </div>
                   </div>
                 </div>
@@ -743,9 +743,8 @@ const MethodDetail = () => {
                         <CaseStudyCard study={caseStudies.find(s => s.id === 'muvmi-tuk-tuks')!} />
                       </div>
                     </div>
-                    <div className="lg:sticky lg:top-8 flex flex-row gap-4">
-                      <img src="/Ethno-phone.jpeg" alt="Paper Prototyping" className="w-1/2 h-full object-cover rounded-lg" />
-                      <img src="/ethno-map.jpeg" alt="Ethnographic Observation Map" className="w-1/2 h-full object-cover rounded-lg" />
+                    <div className="lg:sticky lg:top-8">
+                      <img src="/MuvMi-pps.png" alt="Paper Prototyping" className="w-full h-auto object-cover rounded-lg" />
                     </div>
                   </div>
                 </div>
